@@ -8,10 +8,9 @@ namespace UnitTesting.Tst.XUnit
     public class CalculatorTests
     {
         //Show Output during run
-        //visit https://github.com/nunit/docs/wiki/Attributes for more options
+        //visit https://xunit.github.io/ for more options
 
         [Fact]
-        //[RequiresThread]
         public void Calculator_Add_OneAndOneEqualsTwo()
         {
             Debug.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}");

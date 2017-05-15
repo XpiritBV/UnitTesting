@@ -137,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="03 xUnit\CalculatorTests.cs" />
-    <Compile Include="Calculator.cs" />
     <Compile Include="02 NUnit\CalculatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="01 VS\VisualStudioTests.cs" />
