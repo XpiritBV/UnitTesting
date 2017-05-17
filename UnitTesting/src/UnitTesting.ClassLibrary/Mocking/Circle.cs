@@ -8,6 +8,9 @@ namespace UnitTesting.ClassLibrary.Mocking
 
         public double Radius { get; set; }
 
+        public override string Name { get; set; } = nameof(Circle);
+
+
         public Circle(double radius)
         {
             Radius = radius;

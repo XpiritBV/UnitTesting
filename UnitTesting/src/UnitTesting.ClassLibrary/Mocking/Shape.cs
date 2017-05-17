@@ -8,5 +8,7 @@
     {
         //make this read-only
         public double Area { get; set; }
+
+        public abstract string Name { get; set; }
     }
 }

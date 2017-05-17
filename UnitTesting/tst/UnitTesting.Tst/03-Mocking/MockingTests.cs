@@ -27,6 +27,7 @@ namespace UnitTesting.Tst.Mocking
         {
             //arrange
             var repo = new MockRepository();
+            repo.AllResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
             var program = new Program(repo);
             //act
             var results = await program.GetShapesAsync();
@@ -39,6 +40,7 @@ namespace UnitTesting.Tst.Mocking
         {
             //arrange
             var repo = new MockRepository();
+            repo.AllResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
             var program = new Program(repo);
             //act
             var results = await program.GetShapesAsync();
@@ -53,20 +55,23 @@ namespace UnitTesting.Tst.Mocking
     /// </summary>
     internal class MockRepository : IRepository
     {
-        private IEnumerable<Shape> _allResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
+        /// <summary>
+        /// Setup
+        /// </summary>
+        public IEnumerable<Shape> AllResults { get; set; }
 
         /// <summary>
         /// Connects to a database server on the network and returns all shapes in the store.
         /// </summary>
         /// <returns></returns>
         public Task<IEnumerable<Shape>> GetAllShapes()
-        {            
-            return Task.FromResult(_allResults);
+        {
+            return Task.FromResult(AllResults);
         }
 
         public Task<IEnumerable<Shape>> GetShapeByArea(double area)
         {
-            return Task.FromResult(_allResults.Where(shape => shape.Area == area));
+            return Task.FromResult(AllResults.Where(shape => shape.Area == area));
         }
     }
 }

@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="VS\**" />
+    <EmbeddedResource Remove="VS\**" />
+    <None Remove="VS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
   </ItemGroup>
 

@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+using NSubstitute;
 using UnitTesting.ClassLibrary.Mocking;
 
 namespace UnitTesting.Tst.Mocking
 {
     [TestClass]
-    public class MoqTests
+    public class NSubstituteTests
     {
         [TestMethod]
         public async Task Program_ShapeCountTest()
         {
             //arrange
-            var mock = new Mock<IRepository>();
+            var mock = Substitute.For<IRepository>();
             IEnumerable<Shape> fixedResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
-            mock.Setup(m => m.GetAllShapes()).Returns(Task.FromResult(fixedResults));
-            var program = new Program(mock.Object);
+            mock.GetAllShapes().Returns(Task.FromResult(fixedResults));
+            var program = new Program(mock);
             //act
             var results = await program.GetShapesAsync();
             //assert
@@ -30,10 +30,10 @@ namespace UnitTesting.Tst.Mocking
         public async Task Program_ShapeAreaTest()
         {
             //arrange
-            var mock = new Mock<IRepository>();
+            var mock = Substitute.For<IRepository>();
             IEnumerable<Shape> fixedResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
-            mock.Setup(m => m.GetShapeByArea(It.IsInRange(2D, 4D, Range.Inclusive))).Returns(Task.FromResult(fixedResults));
-            var program = new Program(mock.Object);
+            mock.GetShapeByArea(Arg.Is<double>(i => i >= 2D && i <= 4D)).Returns(Task.FromResult(fixedResults));
+            var program = new Program(mock);
             
             //act
             var results = await program.GetShapesByAreaAsync(2D);
@@ -45,12 +45,9 @@ namespace UnitTesting.Tst.Mocking
         public async Task Program_ShapeAreaEmptyTest()
         {
             //arrange
-            var mock = new Mock<IRepository>();
-            int callCounter = 0;
-            mock.Setup(m => m.GetShapeByArea(It.IsInRange(0D, 2D, Range.Inclusive)))
-                .Returns(Task.FromResult(Enumerable.Empty<Shape>())).Callback(()=> callCounter++);
-
-            var program = new Program(mock.Object);
+            var mock = Substitute.For<IRepository>();
+            mock.GetShapeByArea(Arg.Is<double>(i => i >= 2D && i <= 4D)).Returns(Task.FromResult(Enumerable.Empty<Shape>()));
+            var program = new Program(mock);
 
             //act
             var results = await program.GetShapesByAreaAsync(2D);
@@ -58,8 +55,9 @@ namespace UnitTesting.Tst.Mocking
             Assert.AreEqual(0, results.Count());
 
             //special asserts
-            Assert.AreEqual(1, callCounter);
-            mock.Verify(m => m.GetShapeByArea(It.IsAny<double>()), Times.AtMostOnce);
+            await mock.Received().GetShapeByArea(2D);
+            await mock.DidNotReceive().GetShapeByArea(1D);
+            await mock.Received().GetShapeByArea(Arg.Any<double>());
         }
     }
 }
