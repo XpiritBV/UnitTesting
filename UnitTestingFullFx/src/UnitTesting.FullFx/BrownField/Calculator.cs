@@ -8,117 +8,166 @@ namespace UnitTesting.FullFx.BrownField
         //Note that not all of the tests need to be created.
         //Code has (at least) 2 bugs to fix
 
-        /// <summary>
-        /// Calculates stuff.
-        /// </summary>
-        /// <param name="operandOne"></param>
-        /// <param name="operandTwo"></param>
-        /// <param name="operator"></param>
-        /// <returns></returns>
-        public static object CalculateInDutch(int operandOne, int? operandTwo, Operator @operator)
+        public static object Calculate(string language, int operandOne, int? operandTwo, Operator @operator)
         {
             object result = null;
-            if (@operator == Operator.Add)
-            {
-                if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
 
-                result = $"Resultaat is {operandOne + operandTwo} ({DateTime.Now})";
-            }
-            else
+            if (language == "NL")
             {
-                if (@operator == Operator.Subtract)
+                int operandOne1 = operandOne;
+                int? operandTwo1 = operandTwo;
+                object result1 = null;
+                if (@operator == Operator.Add)
                 {
-                    if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                    if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                    if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                    if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                    if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                    if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                    if (operandOne1 > 1000)
+                        throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                    if (operandOne1 < -1000)
+                        throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                    if (operandTwo1 > 1000)
+                        throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                    if (operandTwo1 < -1000)
+                        throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                    result = $"Resultaat is {operandOne - operandTwo} ({DateTime.Now})";
+                    result1 = $"Resultaat is {operandOne1 + operandTwo1} ({DateTime.Now})";
                 }
                 else
                 {
-                    if (@operator == Operator.Pow)
+                    if (@operator == Operator.Subtract)
                     {
-                        if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                        if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                        if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                        if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                        if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                        if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                        if (operandOne1 > 1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                        if (operandOne1 < -1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                        if (operandTwo1 > 1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                        if (operandTwo1 < -1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                        result = $"Resultaat is {Math.Pow(operandOne, operandTwo.Value)} ({DateTime.Now})";
+                        result1 = $"Resultaat is {operandOne1 - operandTwo1} ({DateTime.Now})";
                     }
                     else
                     {
-                        if (@operator == Operator.Multiply)
+                        if (@operator == Operator.Pow)
                         {
-                            if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                            if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                            if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                            if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                            if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                            if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                            if (operandOne1 > 1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                            if (operandOne1 < -1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                            if (operandTwo1 > 1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                            if (operandTwo1 < -1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                            result = $"Resultaat is {operandOne * operandTwo} ({DateTime.Now})";
+                            result1 = $"Resultaat is {Math.Pow(operandOne1, operandTwo1.Value)} ({DateTime.Now})";
                         }
                         else
                         {
-                            if (@operator == Operator.Divide)
+                            if (@operator == Operator.Multiply)
                             {
-                                if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                                if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                                if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                                if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                if (operandOne1 > 1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                        "Max range is 1000.");
+                                if (operandOne1 < -1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                        "Min range is -1000.");
+                                if (operandTwo1 > 1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                        "Max range is 1000.");
+                                if (operandTwo1 < -1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                        "Min range is -1000.");
 
-                                result = $"Resultaat is {operandOne / operandTwo} ({DateTime.Now})";
+                                result1 = $"Resultaat is {operandOne1 * operandTwo1} ({DateTime.Now})";
                             }
                             else
                             {
-                                //single operator:
-                                if (@operator == Operator.SquareRoot)
+                                if (@operator == Operator.Divide)
                                 {
-                                    if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                    if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                    if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                    if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                    if (operandOne1 > 1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                            "Max range is 1000.");
+                                    if (operandOne1 < -1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                            "Min range is -1000.");
+                                    if (operandTwo1 > 1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                            "Max range is 1000.");
+                                    if (operandTwo1 < -1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                            "Min range is -1000.");
 
-                                    result = $"Resultaat is {Math.Sqrt(operandOne)} ({DateTime.Now})";
+                                    result1 = $"Resultaat is {operandOne1 / operandTwo1} ({DateTime.Now})";
                                 }
                                 else
                                 {
                                     //single operator:
-                                    if (@operator == Operator.Sin)
+                                    if (@operator == Operator.SquareRoot)
                                     {
-                                        if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                        if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                        if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                        if (operandTwo1.HasValue)
+                                            throw new InvalidOperationException(nameof(operandTwo1));
+                                        if (operandOne1 > 1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                "Max range is 1000.");
+                                        if (operandOne1 < -1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                "Min range is -1000.");
 
-                                        result = $"Resultaat is {Math.Sin(operandOne)} ({DateTime.Now})";
+                                        result1 = $"Resultaat is {Math.Sqrt(operandOne1)} ({DateTime.Now})";
                                     }
                                     else
                                     {
                                         //single operator:
-                                        if (@operator == Operator.Cos)
+                                        if (@operator == Operator.Sin)
                                         {
-                                            if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                            if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                            if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                            if (operandTwo1.HasValue)
+                                                throw new InvalidOperationException(nameof(operandTwo1));
+                                            if (operandOne1 > 1000)
+                                                throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                    "Max range is 1000.");
+                                            if (operandOne1 < -1000)
+                                                throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                    "Min range is -1000.");
 
-                                            result = $"Resultaat is {Math.Cos(operandOne)} ({DateTime.Now})";
+                                            result1 = $"Resultaat is {Math.Sin(operandOne1)} ({DateTime.Now})";
                                         }
                                         else
                                         {
                                             //single operator:
-                                            if (@operator == Operator.Tan)
+                                            if (@operator == Operator.Cos)
                                             {
-                                                if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                                if (operandTwo1.HasValue)
+                                                    throw new InvalidOperationException(nameof(operandTwo1));
+                                                if (operandOne1 > 1000)
+                                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                        "Max range is 1000.");
+                                                if (operandOne1 < -1000)
+                                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                        "Min range is -1000.");
 
-                                                result = $"Resultaat is {Math.Tan(operandOne)} ({DateTime.Now})";
+                                                result1 = $"Resultaat is {Math.Cos(operandOne1)} ({DateTime.Now})";
+                                            }
+                                            else
+                                            {
+                                                //single operator:
+                                                if (@operator == Operator.Tan)
+                                                {
+                                                    if (operandTwo1.HasValue)
+                                                        throw new InvalidOperationException(nameof(operandTwo1));
+                                                    if (operandOne1 > 1000)
+                                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                            "Max range is 1000.");
+                                                    if (operandOne1 < -1000)
+                                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                            "Min range is -1000.");
+
+                                                    result1 =
+                                                        $"Resultaat is {Math.Tan(operandOne1)} ({DateTime.Now})";
+                                                }
                                             }
                                         }
                                     }
@@ -127,121 +176,165 @@ namespace UnitTesting.FullFx.BrownField
                         }
                     }
                 }
+                result = result1;
             }
-            return result;
-        }
-
-        /// <summary>
-        /// Calculates stuff.
-        /// </summary>
-        /// <param name="operandOne"></param>
-        /// <param name="operandTwo"></param>
-        /// <param name="operator"></param>
-        /// <returns></returns>
-        public static object CalculateInEnglish(int operandOne, int? operandTwo, Operator @operator)
-        {
-            object result = null;
-            if (@operator == Operator.Add)
+            else if (language == "EN")
             {
-                if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
-
-                result = $"Result is {operandOne + operandTwo} ({DateTime.Now})";
-            }
-            else
-            {
-                if (@operator == Operator.Subtract)
                 {
-                    if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                    if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                    if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                    if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                    if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
-
-                    result = $"Result is {operandOne - operandTwo} ({DateTime.Now})";
-                }
-                else
-                {
-                    if (@operator == Operator.Pow)
+                    int operandOne1 = operandOne;
+                    int? operandTwo1 = operandTwo;
+                    object result1 = null;
+                    if (@operator == Operator.Add)
                     {
-                        if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                        if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                        if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                        if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                        if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                        if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                        if (operandOne1 > 1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                        if (operandOne1 < -1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                        if (operandTwo1 > 1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                        if (operandTwo1 < -1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                        result = $"Result is {Math.Pow(operandOne, operandTwo.Value)} ({DateTime.Now})";
+                        result1 = $"Result is {operandOne1 + operandTwo1} ({DateTime.Now})";
                     }
                     else
                     {
-                        if (@operator == Operator.Multiply)
+                        if (@operator == Operator.Subtract)
                         {
-                            if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                            if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                            if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                            if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                            if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                            if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                            if (operandOne1 > 1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                            if (operandOne1 < -1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                            if (operandTwo1 > 1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                            if (operandTwo1 < -1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                            result = $"Result is {operandOne * operandTwo} ({DateTime.Now})";
+                            result1 = $"Result is {operandOne1 - operandTwo1} ({DateTime.Now})";
                         }
                         else
                         {
-                            if (@operator == Operator.Divide)
+                            if (@operator == Operator.Pow)
                             {
-                                if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                                if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                                if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                                if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                if (operandOne1 > 1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                                if (operandOne1 < -1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                                if (operandTwo1 > 1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                                if (operandTwo1 < -1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                                result = $"Result is {operandOne / operandTwo} ({DateTime.Now})";
+                                result1 = $"Result is {Math.Pow(operandOne1, operandTwo1.Value)} ({DateTime.Now})";
                             }
                             else
                             {
-                                //single operator:
-                                if (@operator == Operator.SquareRoot)
+                                if (@operator == Operator.Multiply)
                                 {
-                                    if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                    if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                    if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                    if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                    if (operandOne1 > 1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                            "Max range is 1000.");
+                                    if (operandOne1 < -1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                            "Min range is -1000.");
+                                    if (operandTwo1 > 1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                            "Max range is 1000.");
+                                    if (operandTwo1 < -1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                            "Min range is -1000.");
 
-                                    result = $"Result is {Math.Sqrt(operandOne)} ({DateTime.Now})";
+                                    result1 = $"Result is {operandOne1 * operandTwo1} ({DateTime.Now})";
                                 }
                                 else
                                 {
-                                    //single operator:
-                                    if (@operator == Operator.Sin)
+                                    if (@operator == Operator.Divide)
                                     {
-                                        if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                        if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                        if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                        if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                        if (operandOne1 > 1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                "Max range is 1000.");
+                                        if (operandOne1 < -1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                "Min range is -1000.");
+                                        if (operandTwo1 > 1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                                "Max range is 1000.");
+                                        if (operandTwo1 < -1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                                "Min range is -1000.");
 
-                                        result = $"Result is {Math.Sin(operandOne)} ({DateTime.Now})";
+                                        result1 = $"Result is {operandOne1 / operandTwo1} ({DateTime.Now})";
                                     }
                                     else
                                     {
                                         //single operator:
-                                        if (@operator == Operator.Cos)
+                                        if (@operator == Operator.SquareRoot)
                                         {
-                                            if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                            if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                            if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                            if (operandTwo1.HasValue)
+                                                throw new InvalidOperationException(nameof(operandTwo1));
+                                            if (operandOne1 > 1000)
+                                                throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                    "Max range is 1000.");
+                                            if (operandOne1 < -1000)
+                                                throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                    "Min range is -1000.");
 
-                                            result = $"Result is {Math.Cos(operandOne)} ({DateTime.Now})";
+                                            result1 = $"Result is {Math.Sqrt(operandOne1)} ({DateTime.Now})";
                                         }
                                         else
                                         {
                                             //single operator:
-                                            if (@operator == Operator.Tan)
+                                            if (@operator == Operator.Sin)
                                             {
-                                                if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                                if (operandTwo1.HasValue)
+                                                    throw new InvalidOperationException(nameof(operandTwo1));
+                                                if (operandOne1 > 1000)
+                                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                        "Max range is 1000.");
+                                                if (operandOne1 < -1000)
+                                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                        "Min range is -1000.");
 
-                                                result = $"Result is {Math.Tan(operandOne)} ({DateTime.Now})";
+                                                result1 = $"Result is {Math.Sin(operandOne1)} ({DateTime.Now})";
+                                            }
+                                            else
+                                            {
+                                                //single operator:
+                                                if (@operator == Operator.Cos)
+                                                {
+                                                    if (operandTwo1.HasValue)
+                                                        throw new InvalidOperationException(nameof(operandTwo1));
+                                                    if (operandOne1 > 1000)
+                                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                            "Max range is 1000.");
+                                                    if (operandOne1 < -1000)
+                                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                            "Min range is -1000.");
+
+                                                    result1 = $"Result is {Math.Cos(operandOne1)} ({DateTime.Now})";
+                                                }
+                                                else
+                                                {
+                                                    //single operator:
+                                                    if (@operator == Operator.Tan)
+                                                    {
+                                                        if (operandTwo1.HasValue)
+                                                            throw new InvalidOperationException(nameof(operandTwo1));
+                                                        if (operandOne1 > 1000)
+                                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                                "Max range is 1000.");
+                                                        if (operandOne1 < -1000)
+                                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                                "Min range is -1000.");
+
+                                                        result1 = $"Result is {Math.Tan(operandOne1)} ({DateTime.Now})";
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -249,122 +342,167 @@ namespace UnitTesting.FullFx.BrownField
                             }
                         }
                     }
+                    result = result1;
                 }
             }
-            return result;
-        }
-
-        /// <summary>
-        /// Calculates stuff.
-        /// </summary>
-        /// <param name="operandOne"></param>
-        /// <param name="operandTwo"></param>
-        /// <param name="operator"></param>
-        /// <returns></returns>
-        public static object CalculateInGerman(int operandOne, int? operandTwo, Operator @operator)
-        {
-            object result = null;
-            if (@operator == Operator.Add)
+            else if (language == "DE")
             {
-                if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
-
-                result = $"Ergebnis ist {operandOne + operandTwo} ({DateTime.Now})";
-            }
-            else
-            {
-                if (@operator == Operator.Subtract)
                 {
-                    if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                    if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                    if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                    if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                    if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
-
-                    result = $"Ergebnis ist {operandOne - operandTwo} ({DateTime.Now})";
-                }
-                else
-                {
-                    if (@operator == Operator.Pow)
+                    int operandOne1 = operandOne;
+                    int? operandTwo1 = operandTwo;
+                    object result1 = null;
+                    if (@operator == Operator.Add)
                     {
-                        if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                        if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                        if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                        if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                        if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                        if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                        if (operandOne1 > 1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                        if (operandOne1 < -1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                        if (operandTwo1 > 1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                        if (operandTwo1 < -1000)
+                            throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                        result = $"Ergebnis ist {Math.Pow(operandOne, operandTwo.Value)} ({DateTime.Now})";
+                        result1 = $"Ergebnis ist {operandOne1 + operandTwo1} ({DateTime.Now})";
                     }
                     else
                     {
-                        if (@operator == Operator.Multiply)
+                        if (@operator == Operator.Subtract)
                         {
-                            if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                            if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                            if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                            if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                            if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                            if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                            if (operandOne1 > 1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                            if (operandOne1 < -1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                            if (operandTwo1 > 1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                            if (operandTwo1 < -1000)
+                                throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                            result = $"Ergebnis ist {operandOne * operandTwo} ({DateTime.Now})";
+                            result1 = $"Ergebnis ist {operandOne1 - operandTwo1} ({DateTime.Now})";
                         }
                         else
                         {
-                            if (@operator == Operator.Divide)
+                            if (@operator == Operator.Pow)
                             {
-                                if (!operandTwo.HasValue) throw new ArgumentNullException(nameof(operandTwo));
-                                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
-                                if (operandTwo > 1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Max range is 1000.");
-                                if (operandTwo < -1000) throw new ArgumentOutOfRangeException(nameof(operandTwo), "Min range is -1000.");
+                                if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                if (operandOne1 > 1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandOne1), "Max range is 1000.");
+                                if (operandOne1 < -1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandOne1), "Min range is -1000.");
+                                if (operandTwo1 > 1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Max range is 1000.");
+                                if (operandTwo1 < -1000)
+                                    throw new ArgumentOutOfRangeException(nameof(operandTwo1), "Min range is -1000.");
 
-                                result = $"Ergebnis ist {operandOne / operandTwo} ({DateTime.Now})";
+                                result1 = $"Ergebnis ist {Math.Pow(operandOne1, operandTwo1.Value)} ({DateTime.Now})";
                             }
                             else
                             {
-                                //single operator:
-                                if (@operator == Operator.SquareRoot)
+                                if (@operator == Operator.Multiply)
                                 {
-                                    if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                    if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                    if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                    if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                    if (operandOne1 > 1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                            "Max range is 1000.");
+                                    if (operandOne1 < -1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                            "Min range is -1000.");
+                                    if (operandTwo1 > 1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                            "Max range is 1000.");
+                                    if (operandTwo1 < -1000)
+                                        throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                            "Min range is -1000.");
 
-                                    result = $"Ergebnis ist {Math.Sqrt(operandOne)} ({DateTime.Now})";
+                                    result1 = $"Ergebnis ist {operandOne1 * operandTwo1} ({DateTime.Now})";
                                 }
                                 else
                                 {
-                                    //single operator:
-                                    if (@operator == Operator.Sin)
+                                    if (@operator == Operator.Divide)
                                     {
-                                        if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                        if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                        if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                        if (!operandTwo1.HasValue) throw new ArgumentNullException(nameof(operandTwo1));
+                                        if (operandOne1 > 1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                "Max range is 1000.");
+                                        if (operandOne1 < -1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                "Min range is -1000.");
+                                        if (operandTwo1 > 1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                                "Max range is 1000.");
+                                        if (operandTwo1 < -1000)
+                                            throw new ArgumentOutOfRangeException(nameof(operandTwo1),
+                                                "Min range is -1000.");
 
-                                        result = $"Ergebnis ist {Math.Sin(operandOne)} ({DateTime.Now})";
+                                        result1 = $"Ergebnis ist {operandOne1 / operandTwo1} ({DateTime.Now})";
                                     }
                                     else
                                     {
                                         //single operator:
-                                        if (@operator == Operator.Cos)
+                                        if (@operator == Operator.SquareRoot)
                                         {
-                                            if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                            if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                            if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                            if (operandTwo1.HasValue)
+                                                throw new InvalidOperationException(nameof(operandTwo1));
+                                            if (operandOne1 > 1000)
+                                                throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                    "Max range is 1000.");
+                                            if (operandOne1 < -1000)
+                                                throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                    "Min range is -1000.");
 
-                                            result = $"Ergebnis ist {Math.Cos(operandOne)} ({DateTime.Now})";
+                                            result1 = $"Ergebnis ist {Math.Sqrt(operandOne1)} ({DateTime.Now})";
                                         }
                                         else
                                         {
                                             //single operator:
-                                            if (@operator == Operator.Tan)
+                                            if (@operator == Operator.Sin)
                                             {
-                                                if (operandTwo.HasValue) throw new InvalidOperationException(nameof(operandTwo));
-                                                if (operandOne > 1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Max range is 1000.");
-                                                if (operandOne < -1000) throw new ArgumentOutOfRangeException(nameof(operandOne), "Min range is -1000.");
+                                                if (operandTwo1.HasValue)
+                                                    throw new InvalidOperationException(nameof(operandTwo1));
+                                                if (operandOne1 > 1000)
+                                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                        "Max range is 1000.");
+                                                if (operandOne1 < -1000)
+                                                    throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                        "Min range is -1000.");
 
-                                                result = $"Ergebnis ist {Math.Tan(operandOne)} ({DateTime.Now})";
+                                                result1 = $"Ergebnis ist {Math.Sin(operandOne1)} ({DateTime.Now})";
+                                            }
+                                            else
+                                            {
+                                                //single operator:
+                                                if (@operator == Operator.Cos)
+                                                {
+                                                    if (operandTwo1.HasValue)
+                                                        throw new InvalidOperationException(nameof(operandTwo1));
+                                                    if (operandOne1 > 1000)
+                                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                            "Max range is 1000.");
+                                                    if (operandOne1 < -1000)
+                                                        throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                            "Min range is -1000.");
+
+                                                    result1 = $"Ergebnis ist {Math.Cos(operandOne1)} ({DateTime.Now})";
+                                                }
+                                                else
+                                                {
+                                                    //single operator:
+                                                    if (@operator == Operator.Tan)
+                                                    {
+                                                        if (operandTwo1.HasValue)
+                                                            throw new InvalidOperationException(nameof(operandTwo1));
+                                                        if (operandOne1 > 1000)
+                                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                                "Max range is 1000.");
+                                                        if (operandOne1 < -1000)
+                                                            throw new ArgumentOutOfRangeException(nameof(operandOne1),
+                                                                "Min range is -1000.");
+
+                                                        result1 =
+                                                            $"Ergebnis ist {Math.Tan(operandOne1)} ({DateTime.Now})";
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -372,8 +510,10 @@ namespace UnitTesting.FullFx.BrownField
                             }
                         }
                     }
+                    result = result1;
                 }
             }
+            else throw new ArgumentOutOfRangeException(nameof(language), "Languages supported: NL, EN, DE.");
             return result;
         }
     }
