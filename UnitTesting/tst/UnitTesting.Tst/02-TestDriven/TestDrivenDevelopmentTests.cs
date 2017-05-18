@@ -26,7 +26,7 @@ namespace UnitTesting.Tst.TestDriven
         {
             //given
             int left = 1;
-            int right = 1;
+            int right = -1;
             var calculator = new Calculator();
             //when
             int result = calculator.Add(left, right);
