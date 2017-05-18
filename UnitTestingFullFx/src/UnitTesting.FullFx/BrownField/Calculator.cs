@@ -5,6 +5,7 @@ namespace UnitTesting.FullFx.BrownField
     public class MultiCulturalCalculator
     {
         //TODO: Refactor this code, so it can be unit tested.
+        //Goal: the ability to add a language without adding tests
         //Note that not all of the tests need to be created.
         //Code has (at least) 2 bugs to fix
 
