@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrownField\Calculator.cs" />
+    <Compile Include="BrownField\Account.cs" />
+    <Compile Include="BrownField\BookKeeping.cs" />
+    <Compile Include="BrownField\CreditTransactionHandler.cs" />
+    <Compile Include="BrownField\DebitTransactionHandler.cs" />
+    <Compile Include="BrownField\MultiCulturalCalculator.cs" />
+    <Compile Include="BrownField\Transaction.cs" />
+    <Compile Include="BrownField\TransactionHandler.cs" />
+    <Compile Include="BrownField\TransactionType.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VS\Chain.cs" />
