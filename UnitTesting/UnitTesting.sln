@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26510.0
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting.ClassLibrary", "src\UnitTesting.ClassLibrary\UnitTesting.ClassLibrary.csproj", "{865B975A-2C51-4AA7-A66F-4C3771D6B66D}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting.Tst", "tst\UnitTesting.Tst\UnitTesting.Tst.csproj", "{AC097665-FD6B-401A-86C6-33CF6717F6F2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{9BE4192D-4095-4EEB-8B33-B0C05939E885}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4D308A0F-342A-4F50-8940-8A241A4153B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{004FD04F-9FCF-45F3-BA67-262F1BEBF3A5}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,10 +38,6 @@ Global
 		{9BE4192D-4095-4EEB-8B33-B0C05939E885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BE4192D-4095-4EEB-8B33-B0C05939E885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BE4192D-4095-4EEB-8B33-B0C05939E885}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D308A0F-342A-4F50-8940-8A241A4153B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D308A0F-342A-4F50-8940-8A241A4153B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D308A0F-342A-4F50-8940-8A241A4153B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D308A0F-342A-4F50-8940-8A241A4153B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +46,5 @@ Global
 		{865B975A-2C51-4AA7-A66F-4C3771D6B66D} = {19D5E196-931C-4F27-902F-87A1B2AB297E}
 		{AC097665-FD6B-401A-86C6-33CF6717F6F2} = {4FC53C9C-FD29-4616-B973-45EB4A5C5F2E}
 		{9BE4192D-4095-4EEB-8B33-B0C05939E885} = {19D5E196-931C-4F27-902F-87A1B2AB297E}
-		{4D308A0F-342A-4F50-8940-8A241A4153B0} = {19D5E196-931C-4F27-902F-87A1B2AB297E}
 	EndGlobalSection
 EndGlobal

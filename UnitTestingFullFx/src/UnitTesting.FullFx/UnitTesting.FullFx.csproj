@@ -50,6 +50,8 @@
     <Compile Include="BrownField\TransactionHandler.cs" />
     <Compile Include="BrownField\TransactionType.cs" />
     <Compile Include="Calculator.cs" />
+    <Compile Include="BrownField\CarInsurance.cs" />
+    <Compile Include="MaxValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VS\Chain.cs" />
     <Compile Include="VS\Link.cs" />

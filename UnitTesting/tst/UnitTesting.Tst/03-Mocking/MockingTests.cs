@@ -26,8 +26,8 @@ namespace UnitTesting.Tst.Mocking
         public async Task Program_ShapeCountTest()
         {
             //arrange
-            var repo = new MockRepository();
-            repo.AllResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
+            var repo = new MockRepository(new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) });
+            
             var program = new Program(repo);
             //act
             var results = await program.GetShapesAsync();
@@ -39,11 +39,11 @@ namespace UnitTesting.Tst.Mocking
         public async Task Program_ShapeAreaTest()
         {
             //arrange
-            var repo = new MockRepository();
-            repo.AllResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
+            var repo = new MockRepository(new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) });
+            
             var program = new Program(repo);
             //act
-            var results = await program.GetShapesAsync();
+            var results = await program.GetShapesByAreaAsync(0d);
             //assert
             Assert.AreEqual(2, results.Count());
         }
@@ -55,10 +55,17 @@ namespace UnitTesting.Tst.Mocking
     /// </summary>
     internal class MockRepository : IRepository
     {
-        /// <summary>
-        /// Setup
-        /// </summary>
-        public IEnumerable<Shape> AllResults { get; set; }
+        public IEnumerable<Shape> AllResults { get; }
+
+        public Func<Task<IEnumerable<Shape>>> GetAllShapesImplementation { get; set; }
+
+        public Func<double, Task<IEnumerable<Shape>>> GetShapeByAreaImplementation { get; set; }
+
+        public MockRepository(IEnumerable<Shape> AllResults)
+        {
+            GetAllShapesImplementation = () => Task.FromResult(AllResults);
+            GetShapeByAreaImplementation = area => Task.FromResult(AllResults.Where(shape => shape.Area == area));
+        }
 
         /// <summary>
         /// Connects to a database server on the network and returns all shapes in the store.
@@ -66,12 +73,12 @@ namespace UnitTesting.Tst.Mocking
         /// <returns></returns>
         public Task<IEnumerable<Shape>> GetAllShapes()
         {
-            return Task.FromResult(AllResults);
+            return GetAllShapesImplementation();
         }
 
         public Task<IEnumerable<Shape>> GetShapeByArea(double area)
         {
-            return Task.FromResult(AllResults.Where(shape => shape.Area == area));
+            return GetShapeByAreaImplementation(area);
         }
     }
 }
