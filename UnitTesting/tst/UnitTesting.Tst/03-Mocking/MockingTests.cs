@@ -64,7 +64,7 @@ namespace UnitTesting.Tst.Mocking
         public MockRepository(IEnumerable<Shape> AllResults)
         {
             GetAllShapesImplementation = () => Task.FromResult(AllResults);
-            GetShapeByAreaImplementation = area => Task.FromResult(AllResults.Where(shape => shape.Area == area));
+            GetShapeByAreaImplementation = area => Task.FromResult(AllResults.Where(shape => shape.Area >= area));
         }
 
         /// <summary>
