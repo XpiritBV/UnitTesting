@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UnitTesting.ClassLibrary;
 using UnitTesting.ClassLibrary.TestDriven;
 
 namespace UnitTesting.Tst.TestDriven

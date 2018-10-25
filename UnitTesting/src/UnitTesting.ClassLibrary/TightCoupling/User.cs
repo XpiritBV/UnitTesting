@@ -1,7 +1,5 @@
 ﻿namespace UnitTesting.ClassLibrary.TightCoupling
 {
-    #region User
-
     public class User
     {
         public int ID { get; set; }
@@ -35,6 +33,4 @@
         public string CatchPhrase { get; set; }
         public string Bs { get; set; }
     }
-
-    #endregion User
 }

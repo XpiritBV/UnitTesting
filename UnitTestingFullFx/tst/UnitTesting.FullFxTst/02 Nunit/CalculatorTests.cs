@@ -32,12 +32,13 @@ namespace UnitTesting.Tst.Nunit
             //assert using base class
             Expect(result, EqualTo(2));
         }
-                
+
         /// <summary>
         /// Results in 3 unit tests
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
+        [Test]
         [TestCase(1, 1)]
         [TestCase(1, -1)]
         [TestCase(1, 0)]
