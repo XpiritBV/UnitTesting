@@ -15,13 +15,13 @@ namespace UnitTesting.Tst.TightCoupling
         [TestMethod]
         public async Task ClientGetUsersTest()
         {
-            //arrange
+            // Arrange
             var client = new Client();
            
-            //act
+            // Act
             var users = await client.GetUsersAsync("Graham");
             
-            //assert
+            // Assert
             Assert.AreEqual(1, users.Count(), "Unexpected amount of users matched last name 'Graham'.");
         }
     }

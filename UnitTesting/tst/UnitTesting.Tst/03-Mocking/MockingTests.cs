@@ -13,37 +13,37 @@ namespace UnitTesting.Tst.Mocking
         [TestMethod] //this will always fail
         public async Task Program_FailingShapeCountTest()
         {
-            //arrange
+            // Arrange
             var program = new Program();
-            //act
+            // Act
             var results = await program.GetShapesAsync();
-            //assert, never works
+            // Assert, never works
             Assert.AreEqual(2, results.Count());
         }
 
         [TestMethod]
         public async Task Program_ShapeCountTest()
         {
-            //arrange
+            // Arrange
             var repo = new MockRepository(new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) });
             
             var program = new Program(repo);
-            //act
+            // Act
             var results = await program.GetShapesAsync();
-            //assert
+            // Assert
             Assert.AreEqual(2, results.Count());
         }
 
         [TestMethod]
         public async Task Program_ShapeAreaTest()
         {
-            //arrange
+            // Arrange
             var repo = new MockRepository(new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) });
             
             var program = new Program(repo);
-            //act
+            // Act
             var results = await program.GetShapesByAreaAsync(0d);
-            //assert
+            // Assert
             Assert.AreEqual(2, results.Count());
         }
     }

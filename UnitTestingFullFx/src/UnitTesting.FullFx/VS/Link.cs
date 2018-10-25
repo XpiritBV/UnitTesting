@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnitTesting.ClassLibrary
+﻿namespace UnitTesting.ClassLibrary
 {
     public class Link
     {

@@ -1,7 +1,6 @@
 ﻿using Xunit;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace UnitTesting.Tst.XUnit
 {
@@ -15,47 +14,36 @@ namespace UnitTesting.Tst.XUnit
         {
             Debug.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}");
             
-            //arrage
+            // Arrange
             var calc = new Calculator();
            
-            //act
+            // Act
             var result = calc.Add(1, 1);
             
-            //assert
+            // Assert
             Assert.Equal(2, result);           
         }
 
         /// <summary>
         /// Results in 3 unit tests
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
         [Theory]
-        [InlineData(1, 1)]
-        [InlineData(1, -1)]
-        [InlineData(1, 0)]
-        public void Calculator_Add(int left, int right)
+        [InlineData(1, 1, 2)]
+        [InlineData(1, -1, 0)]
+        [InlineData(1, 0, 1)]
+        public void Calculator_Add(int left, int right, int expectedResult)
         {
             Debug.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}");
 
-
-            //arrage
+            // Arrage
             var calc = new Calculator();
-            //act
+            
+            // Act
             var result = calc.Add(left, right);
-            //assert
-            switch (right)
-            {
-                case 1:
-                    Assert.Equal(2, result);
-                    break;
-                case -1:
-                    Assert.Equal(0, result);
-                    break;
-                case 0:
-                    Assert.Equal(1, result);
-                    break;
-            }
+            
+            // Assert
+            Assert.Equal(expectedResult, result);
+           
         }
     }
 }

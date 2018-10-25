@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace UnitTesting.Tst.Nunit
 {
@@ -17,53 +16,41 @@ namespace UnitTesting.Tst.Nunit
         {
             Debug.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}");
             
-            //arrage
+            // Arrange
             var calc = new Calculator();
            
-            //act
+            // Act
             var result = calc.Add(1, 1);
             
             ///////////////multiple ways to describe the same assertion:
 
-            //assert
+            // Assert
             Assert.AreEqual(2, result, "Add 1+1 not 2");
-            //assert style 2
+            // Assert style 2
             Assert.That(result, Is.EqualTo(2));
-            //assert using base class
+            // Assert using base class
             Expect(result, EqualTo(2));
         }
 
         /// <summary>
         /// Results in 3 unit tests
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
         [Test]
-        [TestCase(1, 1)]
-        [TestCase(1, -1)]
-        [TestCase(1, 0)]
-        public void Calculator_Add(int left, int right)
+        [TestCase(1, 1, 2, "Add 1+1 not 2")]
+        [TestCase(1, -1, 0, "Add 1+-1 not 0")]
+        [TestCase(1, 0, 1, "Add 1+0 not 1")]
+        public void Calculator_Add(int left, int right, int expectedResult, string message)
         {
             Debug.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId}");
 
-
-            //arrage
+            // Arrage
             var calc = new Calculator();
-            //act
+            
+            // Act
             var result = calc.Add(left, right);
-            //assert
-            switch (right)
-            {
-                case 1:
-                    Assert.AreEqual(2, result, "Add 1+1 not 2");
-                    break;
-                case -1:
-                    Assert.AreEqual(0, result, "Add 1+-1 not 0");
-                    break;
-                case 0:
-                    Assert.AreEqual(1, result, "Add 1+0 not 1");
-                    break;
-            }
+            
+            // Assert
+            Assert.That(result, Is.EqualTo(expectedResult), message);
         }
     }
 }

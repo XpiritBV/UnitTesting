@@ -13,36 +13,36 @@ namespace UnitTesting.Tst.Mocking
         [TestMethod]
         public async Task Program_ShapeCountTest()
         {
-            //arrange
+            // Arrange
             var mock = new Mock<IRepository>();
             IEnumerable<Shape> fixedResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
             mock.Setup(m => m.GetAllShapes()).Returns(Task.FromResult(fixedResults));
             var program = new Program(mock.Object);
-            //act
+            // Act
             var results = await program.GetShapesAsync();
-            //assert
+            // Assert
             Assert.AreEqual(2, results.Count());
         }
 
         [TestMethod]
         public async Task Program_ShapeAreaTest()
         {
-            //arrange
+            // Arrange
             var mock = new Mock<IRepository>();
             IEnumerable<Shape> fixedResults = new Shape[] { new Circle(1.0D), new Square(1.0D, 2.0D) };
             mock.Setup(m => m.GetShapeByArea(It.IsInRange(2D, 4D, Range.Inclusive))).Returns(Task.FromResult(fixedResults));
             var program = new Program(mock.Object);
             
-            //act
+            // Act
             var results = await program.GetShapesByAreaAsync(2D);
-            //assert
+            // Assert
             Assert.AreEqual(2, results.Count());
         }
 
         [TestMethod]
         public async Task Program_ShapeAreaEmptyTest()
         {
-            //arrange
+            // Arrange
             var mock = new Mock<IRepository>();
             int callCounter = 0;
             mock.Setup(m => m.GetShapeByArea(It.IsInRange(0D, 2D, Range.Inclusive)))
@@ -50,9 +50,9 @@ namespace UnitTesting.Tst.Mocking
 
             var program = new Program(mock.Object);
 
-            //act
+            // Act
             var results = await program.GetShapesByAreaAsync(2D);
-            //assert
+            // Assert
             Assert.AreEqual(0, results.Count());
 
             //special asserts

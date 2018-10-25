@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UnitTesting.FullFx.BrownField;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTesting.FullFx.BrownField.Tests
 {
@@ -14,15 +8,15 @@ namespace UnitTesting.FullFx.BrownField.Tests
         [TestMethod()]
         public void AddAccountTest()
         {
-            //arrange
+            // Arrange
             var bookKeeping = new BookKeeping();
             var account = bookKeeping.AddAccount("first");
 
-            //act
+            // Act
             account.DebitTransactionHandler.AddTransaction(30);
             account.CreditTransactionHandler.AddTransaction(10);
 
-            //assert
+            // Assert
             Assert.AreEqual(20d, account.Balance);
         }
     }

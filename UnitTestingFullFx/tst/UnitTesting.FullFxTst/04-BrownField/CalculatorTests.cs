@@ -13,15 +13,15 @@ namespace UnitTesting.FullFxTst
         [TestMethod]
         public void GivenCalculator_WhenAddingOneAndOneForDutch_ThenResultIsTwo()
         {
-            //arrange
+            // Arrange
             using (ShimsContext.Create())
             {
                 System.Fakes.ShimDateTime.NowGet = () => new DateTime(2017, 5, 31);
 
-                //act
+                // Act
                 var result = MultiCulturalCalculator.Calculate("NL", 1, 1, Operator.Add);
 
-                //assert
+                // Assert
                 Assert.AreEqual("Resultaat is 2 (31-5-2017 00:00:00)", result);
             }
         }
