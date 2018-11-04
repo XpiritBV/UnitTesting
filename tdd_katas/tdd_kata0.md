@@ -2,12 +2,6 @@
 
 This document contains a list of exercises to practice coding and refactoring in a test driven approach.
 
-## Before you start
-
-- Try not to read ahead.
-- Do one task at a time. The trick is to learn to work incrementally.
-- Make sure you only test for correct inputs. There is no need to test for invalid inputs for this kata.
-
 ## Outline
 
 The goal is to create a [Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game.
@@ -22,7 +16,12 @@ The board consists of 9 positions.
     7 | 8 | 9
 ```
 
-The player ID is either `X` or `O`.
+Each turn the player places a mark of either `X` or `O` in one of the positions.
+
+A player has won if they have placed three marks on:
+- the same row,
+- the same column,
+- one of the two diagonals.
 
 ## Exercises
 
