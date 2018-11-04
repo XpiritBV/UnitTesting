@@ -1,4 +1,4 @@
-# TDD Kata - Tic-tac-toe Example
+# TDD Kata - Tic-tac-toe
 
 This document contains a list of exercises to practice coding and refactoring in a test driven approach.
 
@@ -25,8 +25,9 @@ A player has won if they have placed three marks on:
 
 ## Exercises
 
-- [TDD Kata 1 - Tic-tac-toe Moves](tdd_kata1.md)
-- [TDD Kata 2 - Tic-tac-toe Winners](tdd_kata2.md)
+- [TDD Kata 1 - Tic-tac-toe Moving](tdd_kata1.md)
+- [TDD Kata 2 - Tic-tac-toe Winning](tdd_kata2.md)
 - [TDD Kata 3 - Tic-tac-toe Boundaries](tdd_kata3.md)
 - [TDD Kata 4 - Tic-tac-toe Logging](tdd_kata4.md)
-- [TDD Kata 5 - Tic-tac-toe High scores](tdd_kata5.md)
+- [TDD Kata 5 - Tic-tac-toe Loading game state](tdd_kata5.md)
+- [TDD Kata 6 - Tic-tac-toe Saving game state async](tdd_kata6.md)
