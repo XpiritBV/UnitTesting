@@ -1,29 +1,8 @@
-# TDD Kata 1
+# TDD Kata 1 - Tic-tac-toe Moves
 
-This document contains an exercise to practice coding and refactoring in a test driven approach.
+This document continues from [TDD Kata - Tic-tac-toe Example](tdd_kata0.md).
 
-Before you start: 
-- Try not to read ahead.
-- Do one task at a time. The trick is to learn to work incrementally.
-- Make sure you only test for correct inputs. There is no need to test for invalid inputs for this kata.
-
-## Outline
-
-The goal is to create a [Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game.
-
-The board consists of 9 positions.
-
-```
-    1 | 2 | 3
-   ---|---|---
-    4 | 5 | 6
-   ---|---|---
-    7 | 8 | 9
-```
-
-The player ID is either `X` or `O`.
-
-### Tasks & specifications
+## Tasks & specifications
 
 1.  Create a `GameEngine` class which contains a `Move` method.
     - The Move method accepts the following parameters: 
@@ -35,8 +14,8 @@ The player ID is either `X` or `O`.
         - `Message`
 
 2.  The `GameEngine` should be able to  execute a maximum of 9 moves. Once the 9th move is executed the game is completed.
-    - Start with writing tests to assert `IsGameComplete` (for 0 moves, 1 move and 9 moves).
+    - Start with writing tests to assert `IsGameComplete`. 
 
-3.  The `GameEngine` should throw a `NotSupportedException`   once `Move` is called after the game is called for the 10th time.
+## Next exercise
 
-4.  
+The next kata is [TDD Kata 2 - Tic-tac-toe Winners](tdd_kata2.md).
