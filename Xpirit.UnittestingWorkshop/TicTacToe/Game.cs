@@ -14,7 +14,7 @@ namespace TicTacToe
 
         public async Task PlayAsync(string name)
         {
-            var score = new Random().Next(0, 100);
+            var score = new Random().Next(1, 99);
 
             await HighScoreService.SaveAsync(name, score).ConfigureAwait(false);
         }

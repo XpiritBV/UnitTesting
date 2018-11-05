@@ -1,0 +1,7 @@
+﻿Code Coverage file per project, completely ignores runsettings:
+
+	dotnet test Xpirit.UnittestingWorkshop\TicTacToe.Tests --collect:"Code Coverage" -- RunSettings "Xpirit.UnittestingWorkshop\TicTacToe.Tests\11 CodeCoverage\tictactoe.runsettings"
+
+Coverlet (see https://github.com/tonerdo/coverlet for options, works great with VS Code and Azure DevOps - check our magazine)
+
+	dotnet test /p:CollectCoverage=true

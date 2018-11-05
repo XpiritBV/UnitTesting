@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +13,10 @@ namespace TicTacToe
         Task<int> GetHighScoreAsync(string name);
     }
 
+    /// <summary>
+    /// This class represents some external webservice which you have no control over
+    /// </summary>
+    [ExcludeFromCodeCoverage]
     public class HighScoreService : IHighScoreService
     {
         private readonly IDictionary<string, int> HighScores = new Dictionary<string, int>();
