@@ -2,16 +2,16 @@ using Moq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace TicTacToe.Tests.xUnit.Moq
+namespace TicTacToe.Tests
 {
-    public class GameTestsStrict
+    public class GameTestsTheory
     {
         private Game Game { get; }
 
         private MockRepository MockRepository { get; }
         private Mock<IHighScoreService> HighScoreServiceMock { get; }
 
-        public GameTestsStrict()
+        public GameTestsTheory()
         {
             MockRepository = new MockRepository(MockBehavior.Strict);
             HighScoreServiceMock = MockRepository.Create<IHighScoreService>();
@@ -19,31 +19,16 @@ namespace TicTacToe.Tests.xUnit.Moq
             Game = new Game(HighScoreServiceMock.Object);
         }
 
-        [Fact]
-        public async Task TestPlayerHasHighScoreAfterGamePlay()
-        {
-            //Arrange
-            const string playerName = "Reinier";
-
-            //Act
-            await Game.PlayAsync(playerName).ConfigureAwait(false);
-
-            var (highscoreName, highscore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
-
-            //Assert
-            Assert.Equal(playerName, highscoreName);
-            Assert.True(highscore > 0);
-            Assert.True(highscore < 100);
-        }
-
         [Theory]
         [InlineData("Reinier", 0, 100)]
         [InlineData("Marc", 0, 100)]
         [InlineData("Marcel", 0, 100)]
         [InlineData("Alex", 0, 100)]
-        public async Task TestPlayerHasHighScoreAfterGamePlay_Alternative(string playerName, int minScore, int maxScore)
+        public async Task TestPlayerHasHighScoreAfterGamePlay_Theory(string playerName, int minScore, int maxScore)
         {
             //Arrange
+            HighScoreServiceMock.Setup(service => service.SaveAsync(playerName, It.Is<int>(x => x > minScore && x < maxScore))).Returns(Task.CompletedTask);
+            HighScoreServiceMock.Setup(service => service.GetHighScoreAsync(playerName)).Returns(Task.FromResult(99));
 
             //Act
             await Game.PlayAsync(playerName).ConfigureAwait(false);
@@ -54,6 +39,8 @@ namespace TicTacToe.Tests.xUnit.Moq
             Assert.Equal(playerName, highscoreName);
             Assert.True(highscore > minScore);
             Assert.True(highscore < maxScore);
+
+            MockRepository.VerifyAll();
         }
     }
 }

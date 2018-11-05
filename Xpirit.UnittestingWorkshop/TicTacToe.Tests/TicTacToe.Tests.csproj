@@ -14,7 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TicTacToeV2\TicTacToeV2.csproj" />
+    <ProjectReference Include="..\TicTacToe\TicTacToe.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="06 Exceptions\" />
+    <Folder Include="07 Concrete classes\" />
   </ItemGroup>
 
 </Project>
