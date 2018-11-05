@@ -5,3 +5,6 @@
 Coverlet (see https://github.com/tonerdo/coverlet for options, works great with VS Code and Azure DevOps - check our magazine)
 
 	dotnet test /p:CollectCoverage=true
+
+Azure DevOps is out of scope, but you want to configure something to visualize code coverage there as well (RvM: Maybe make a demo pipeline?).
+Maybe together with SonarQube.
