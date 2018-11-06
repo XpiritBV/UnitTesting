@@ -25,9 +25,4 @@
     <ProjectReference Include="..\TicTacToe\TicTacToe.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="09 Difficult cases\" />
-    <Folder Include="10 Parallelism\" />
-  </ItemGroup>
-
 </Project>
