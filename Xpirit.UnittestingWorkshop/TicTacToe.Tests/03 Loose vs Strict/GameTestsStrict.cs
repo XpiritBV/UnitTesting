@@ -28,12 +28,11 @@ namespace TicTacToe.Tests
             //Act
             await Game.PlayAsync(playerName).ConfigureAwait(false);
 
-            var (highscoreName, highscore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+            var (highscoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
 
             //Assert
             Assert.Equal(playerName, highscoreName);
-            Assert.True(highscore > 0);
-            Assert.True(highscore < 100);
+            Assert.InRange(highScore, 0, 100);
 
             MockRepository.VerifyAll();
         }
@@ -54,8 +53,7 @@ namespace TicTacToe.Tests
 
             //Assert
             Assert.Equal(playerName, highScoreName);
-            Assert.True(highScore > 0);
-            Assert.True(highScore < 100);
+            Assert.InRange(highScore, 0, 100);
 
             MockRepository.VerifyAll();
         }

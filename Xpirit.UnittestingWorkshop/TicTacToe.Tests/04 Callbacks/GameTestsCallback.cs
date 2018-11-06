@@ -45,8 +45,7 @@ namespace TicTacToe.Tests
             //Assert
             Assert.Equal(playerName, highScoreName);
             Assert.Equal(recordedHighScore, highScore);
-            Assert.True(highScore > 0);
-            Assert.True(highScore < 100);
+            Assert.InRange(highScore, 0, 100);
 
             MockRepository.VerifyAll();
         }

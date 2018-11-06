@@ -33,12 +33,11 @@ namespace TicTacToe.Tests
             //Act
             await Game.PlayAsync(playerName).ConfigureAwait(false);
 
-            var (highscoreName, highscore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+            var (highscoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
 
             //Assert
             Assert.Equal(playerName, highscoreName);
-            Assert.True(highscore > minScore);
-            Assert.True(highscore < maxScore);
+            Assert.InRange(highScore, minScore, maxScore);
 
             MockRepository.VerifyAll();
         }

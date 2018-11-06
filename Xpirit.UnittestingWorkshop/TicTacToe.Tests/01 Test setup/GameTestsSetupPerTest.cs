@@ -27,8 +27,7 @@ namespace TicTacToe.Tests
 
             //Assert
             Assert.Equal(playerName, highScoreName);
-            Assert.True(highScore > 0);
-            Assert.True(highScore < 100);
+            Assert.InRange(highScore, 0, 100);
 
             mockRepository.VerifyAll();
         }
@@ -54,8 +53,7 @@ namespace TicTacToe.Tests
 
             //Assert
             Assert.Equal(playerName, highScoreName);
-            Assert.True(highScore > 0);
-            Assert.True(highScore < 100);
+            Assert.InRange(highScore, 0, 100);
 
             mockRepository.VerifyAll();
         }
