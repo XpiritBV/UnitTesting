@@ -1,12 +1,8 @@
 # UnitTesting
 
-## Code to go with the Xpirit training 'Unit Testing'
+This repository contains the Xpirit.UnittestingWorkshop.sln with demo code that belongs to the Xpirit Unit Testing training.
 
-Two solutions:
+## TDD Katas
 
-- UnitTesting, a .NET Core solution
-	- Featuring a Class Library with tight coupling, placeholder for TDD, and demo of Mocking Framework
-	- Web Project to be used in class room
-
-- UnitTestingFullFx, a .NET 4.6.2 solution that demonstrates stuff that isn't available in .NET Core at this time.
-	- Featuring a Class Library with null reference issue, for ExceptionHelper in VS2017, and a Calculator to test using xUnit and NUnit test frameworks.
+The training consists of coding katas to practice test driven development.
+The use case and katas are described in [tdd_kata_start.md](tdd_katas\tdd_kata_start.md)..  

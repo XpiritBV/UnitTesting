@@ -1,10 +1,8 @@
-# TDD Kata 5 - Tic-tac-toe Saving game state to disk 
+# TDD Kata 5 - Tic-tac-toe Logging
 
-This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata0.md).
+This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the following katas are completed: 
-- [TDD Kata 2 - Tic-tac-toe Moving](tdd_kata2.md)
-- [TDD Kata 3 - Tic-tac-toe Winning](tdd_kata3.md)
+This document assumes the previous kata is completed: [TDD Kata 4 - Tic-tac-toe Boundaries](tdd_kata4.md).
 
 ## Before you start
 
@@ -13,9 +11,10 @@ This document assumes the following katas are completed:
 
 ## Tasks & specifications
 
-1.  Update the game to allow saving the game state to disk.
-    - Ensure the code is fully testable without depending on the file system.
-    - Consider using a wrapper such as [WrapThat.System](https://github.com/WrapThat/WrapThat.System).
+1.  Update the game engine so that it writes a warning to a log when the `Move` method is called for an incorrect move.
+    - Use dependency injection to introduce an `ILogger` interface with a `WriteWarning` method.
+    - The implementation of the `WriteWarning` method can throw a `NotImplementedException` since this code should not be executed during unit tests.
+    - Use a mocking framework to verify that the `WriteWarning` method is called on the logger (interaction-based test).
 
 ## Next exercise
 

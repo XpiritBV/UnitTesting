@@ -1,8 +1,20 @@
-# TDD Kata 3 - Tic-tac-toe Boundaries
+# TDD Kata 3 - Tic-tac-toe Winning
 
-This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata0.md).
+This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the previous kata is completed: [TDD Kata 2 - Tic-tac-toe Winning](tdd_kata2.md).
+This document assumes the previous kata is completed: [TDD Kata 2 - Tic-tac-toe Moving](tdd_kata2.md).
+
+## Board
+
+The game board with the positions:
+
+```
+    1 | 2 | 3
+   ---|---|---
+    4 | 5 | 6
+   ---|---|---
+    7 | 8 | 9
+```
 
 ## Before you start
 
@@ -10,16 +22,22 @@ This document assumes the previous kata is completed: [TDD Kata 2 - Tic-tac-toe 
 - Do one task at a time. The trick is to learn to work incrementally.
 
 ## Tasks & specifications
+1.  Update the `GameEngine` class to include a property for the winning player (e.g. `WinningPlayer`).
 
-1.  The game engine should throw a `NotSupportedException` once `Move` is called for the 10th time.
+2. Update the `GameEngine` so that a game is won when a player has three marks in the same row:
+    - row 1: 1, 2, 3
+    - row 2: 4, 5, 6
+    - row 3: 7, 8, 9
 
-2.  The `Move` method of the game engine should return a warning message (e.g. `$"Incorrect move by player {playerMark}"`) when a player makes a move to a position that is already used.
-    - Add a property for this message in the `GameResult` class.
+3. Update the `GameEngine` so that a game is won when a player has three marks in the same column:
+    - column 1: 1, 4, 7
+    - column 2: 2, 5, 8
+    - column 3: 3, 6, 9
 
-3.  In case of an incorrect move the `GameResult.NextPlayerMark` should not change to the other player.
-
-4.  The game engine should not throw an exception when a player makes incorrect moves and the total number of moves is greater than 9.
+4. Update the `GameEngine` so that a game is won when a player has three marks in a diagonal:
+    - diagonal 1: 1, 5, 9
+    - diagonal 2: 3, 5, 7
 
 ## Next exercise
 
-The next kata is [TDD Kata 4 - Tic-tac-toe Logging](tdd_kata4.md).
+The next kata is [TDD Kata 4 - Tic-tac-toe Boundaries](tdd_kata4.md).

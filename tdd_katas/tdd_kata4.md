@@ -1,8 +1,8 @@
-# TDD Kata 4 - Tic-tac-toe Logging
+# TDD Kata 4 - Tic-tac-toe Boundaries
 
-This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata0.md).
+This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the previous kata is completed: [TDD Kata 3 - Tic-tac-toe Boundaries](tdd_kata3.md).
+This document assumes the previous kata is completed: [TDD Kata 3 - Tic-tac-toe Winning](tdd_kata3.md).
 
 ## Before you start
 
@@ -11,11 +11,12 @@ This document assumes the previous kata is completed: [TDD Kata 3 - Tic-tac-toe 
 
 ## Tasks & specifications
 
-1.  Update the game engine so that it writes a warning to a log when the `Move` method is called for an incorrect move.
-    - Use dependency injection to introduce an `ILogger` interface with a `WriteWarning` method.
-    - The implementation of the `WriteWarning` method can throw a `NotImplementedException` since this code should not be executed during unit tests.
-    - Use a mocking framework to verify that the `WriteWarning` method is called on the logger (interaction-based test).
+1.  The game engine should throw a `NotSupportedException` once `Move` is called for the 10th time.
+
+2.  The `Move` method of the game engine should return a warning message (e.g. `$"Incorrect move by player {playerMark}"`) when a player makes a move to a position that is already used.
+
+3.  The game engine should not throw an exception when a player makes incorrect moves and the total number of moves is greater than 9.
 
 ## Next exercise
 
-The next kata is [TDD Kata 5 - Tic-tac-toe Loading game state](tdd_kata5.md).
+The next kata is [TDD Kata 5 - Tic-tac-toe Logging](tdd_kata5.md).
