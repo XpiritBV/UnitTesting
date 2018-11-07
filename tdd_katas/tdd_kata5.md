@@ -11,10 +11,9 @@ This document assumes the previous kata is completed: [TDD Kata 4 - Tic-tac-toe 
 
 ## Tasks & specifications
 
-1.  Update the game engine so that it writes a warning to a log when the `Move` method is called for an incorrect move.
-    - Use dependency injection to introduce an `ILogger` interface with a `WriteWarning` method.
-    - The implementation of the `WriteWarning` method can throw a `NotImplementedException` since this code should not be executed during unit tests.
-    - Use a mocking framework to verify that the `WriteWarning` method is called on the logger (interaction-based test).
+1.  Update the `GameEngine` so that it writes a message to a log when the `Move` method is called.
+    - Use dependency injection to introduce an `ILogger` interface with a `WriteInformation` method.
+    - Use a mocking framework to verify that the `WriteInformation` method is called on the logger (interaction-based test).
 
 ## Next exercise
 
