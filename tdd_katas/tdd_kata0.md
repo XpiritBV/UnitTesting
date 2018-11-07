@@ -15,8 +15,7 @@ The board consists of 9 positions.
    ---|---|---
     7 | 8 | 9
 ```
-
-Each turn the player places a mark of either `X` or `O` in one of the positions.
+The game is played with two players. Each turn the player places a mark of either `X` or `O` in one of the positions.
 
 A player has won if they have placed three marks on:
 - the same row,
@@ -30,5 +29,5 @@ A player has won if they have placed three marks on:
 - [TDD Kata 3 - Tic-tac-toe Boundaries](tdd_kata3.md)
 - [TDD Kata 4 - Tic-tac-toe Logging](tdd_kata4.md)
 - [TDD Kata 5 - Tic-tac-toe Saving game state](tdd_kata5.md)
-- [TDD Kata 5 - Tic-tac-toe Loading game state](tdd_kata6.md)
-- [TDD Kata 6 - Tic-tac-toe Async saving & loading](tdd_kata6.md)
+- [TDD Kata 6 - Tic-tac-toe Loading game state](tdd_kata6.md)
+- [TDD Kata 7 - Tic-tac-toe Async saving & loading](tdd_kata7.md)
