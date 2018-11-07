@@ -22,21 +22,22 @@ The game board with the positions:
 - Do one task at a time. The trick is to learn to work incrementally.
 
 ## Tasks & specifications
-1.  Update the `GameEngine` class to include a property for the winning player (e.g. `WinningPlayer`).
 
-2. Update the `GameEngine` so that a game is won when a player has three marks in the same row:
+1. Update the `GameEngine` so that a game is won (`IsGameComplete=true`) when a player has three marks in the same row:
     - row 1: 1, 2, 3
     - row 2: 4, 5, 6
     - row 3: 7, 8, 9
 
-3. Update the `GameEngine` so that a game is won when a player has three marks in the same column:
+2. Update the `GameEngine` so that a game is won (`IsGameComplete=true`) when a player has three marks in the same column:
     - column 1: 1, 4, 7
     - column 2: 2, 5, 8
     - column 3: 3, 6, 9
 
-4. Update the `GameEngine` so that a game is won when a player has three marks in a diagonal:
+3. Update the `GameEngine` so that a game is won (`IsGameComplete=true`) when a player has three marks in a diagonal:
     - diagonal 1: 1, 5, 9
     - diagonal 2: 3, 5, 7
+
+4.  Update the `GameEngine` class to include a property for the winning player (e.g. `WinningPlayer`).
 
 ## Next exercise
 
