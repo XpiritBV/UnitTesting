@@ -16,7 +16,7 @@ This document assumes the previous kata is completed: [TDD Kata 1 - Tic-tac-toe 
         - `Player` player1
         - `Player` player2
     - Add a `Move` method which accepts the following parameters: 
-        - player mark
+        - player
         - position on game board
     - Ensure that when the `Move` method is called on the `GameEngine` the `NumberOfMoves` on the correct player instance is updated.
 
