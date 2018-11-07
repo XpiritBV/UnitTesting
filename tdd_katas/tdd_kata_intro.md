@@ -29,6 +29,6 @@ A player has won if they have placed three marks on:
 - [TDD Kata 3 - Tic-tac-toe Winning](tdd_kata3.md)
 - [TDD Kata 4 - Tic-tac-toe Boundaries](tdd_kata4.md)
 - [TDD Kata 5 - Tic-tac-toe Logging](tdd_kata5.md)
-- [TDD Kata 6 - Tic-tac-toe Saving game state](tdd_kata6.md)
-- [TDD Kata 7 - Tic-tac-toe Loading game state](tdd_kata7.md)
+- [TDD Kata 6 - Tic-tac-toe Using game state](tdd_kata6.md)
+- [TDD Kata 7 - Tic-tac-toe Saving game state](tdd_kata7.md)
 - [TDD Kata 8 - Tic-tac-toe Async saving & loading](tdd_kata7.md)

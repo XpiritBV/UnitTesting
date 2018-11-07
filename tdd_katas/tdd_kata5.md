@@ -18,4 +18,4 @@ This document assumes the previous kata is completed: [TDD Kata 4 - Tic-tac-toe 
 
 ## Next exercise
 
-The next kata is [TDD Kata 6 - Tic-tac-toe Loading game state](tdd_kata6.md).
+The next kata is [TDD Kata 6 - Tic-tac-toe Using game state](tdd_kata6.md).

@@ -1,8 +1,8 @@
-# TDD Kata 7 - Tic-tac-toe Async saving & loading 
+# TDD Kata 8 - Tic-tac-toe Async saving & loading 
 
 This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the previous kata is completed: [TDD Kata 6 - Tic-tac-toe Loading game state](tdd_kata6.md).
+This document assumes the previous kata is completed: [TDD Kata 7 - Tic-tac-toe Saving game state to disk](tdd_kata7.md).
 
 ## Before you start
 

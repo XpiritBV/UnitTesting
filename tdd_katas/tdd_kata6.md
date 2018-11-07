@@ -1,10 +1,8 @@
-# TDD Kata 6 - Tic-tac-toe Saving game state to disk 
+# TDD Kata 6 - Tic-tac-toe Using game state 
 
 This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the following katas are completed: 
-- [TDD Kata 3 - Tic-tac-toe Moving](tdd_kata3.md)
-- [TDD Kata 4 - Tic-tac-toe Winning](tdd_kata4.md)
+This document assumes the previous kata is completed: [TDD Kata 5 - Tic-tac-toe Logging](tdd_kata5.md).
 
 ## Before you start
 
@@ -13,10 +11,12 @@ This document assumes the following katas are completed:
 
 ## Tasks & specifications
 
-1.  Update the game to allow saving the game state to disk.
-    - Ensure the code is fully testable without depending on the file system.
-    - Consider using a wrapper such as [WrapThat.System](https://github.com/WrapThat/WrapThat.System).
+1.  Update the `GameEngine` to allow to be initialized with a game state.
+    - Only consider an in memory game state for this kata.
+    - The game state is optional. If no state is used then the game starts from scratch.
+
+2.  Many unit tests can probably be refactored now using by using this game state.
 
 ## Next exercise
 
-The next kata is [TDD Kata 7 - Tic-tac-toe Loading game state](tdd_kata7.md).
+The next kata is [TDD Kata 7 - Tic-tac-toe Saving game state to disk](tdd_kata7.md).
