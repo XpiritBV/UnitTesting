@@ -13,9 +13,9 @@ This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe]
     - `Name`
     - `Mark` (either 'X' or 'O')
     - `NumberOfMoves`
-        - The initial value should be 0.
+        - Ensure that initial value should be 0.
     
-2.  Ensure that the `Name` and `Mark` can't be changed after creating a player object. 
+2.  Ensure that the `Name` and `Mark` can only be set when a player object is created. 
 
 3.  Add a method which increases the `NumberOfMoves` with one. 
 
