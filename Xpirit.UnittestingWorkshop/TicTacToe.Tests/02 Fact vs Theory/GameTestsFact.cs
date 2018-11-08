@@ -1,4 +1,4 @@
-using Moq;
+using FluentAssertions;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -6,59 +6,40 @@ namespace TicTacToe.Tests
 {
     public class GameTestsFact
     {
-        private Game Game { get; }
-
-        private MockRepository MockRepository { get; }
-        private Mock<IHighScoreService> HighScoreServiceMock { get; }
-
-        public GameTestsFact()
-        {
-            MockRepository = new MockRepository(MockBehavior.Strict);
-            HighScoreServiceMock = MockRepository.Create<IHighScoreService>();
-
-            Game = new Game(HighScoreServiceMock.Object);
-        }
-
         [Fact]
         public async Task TestPlayerHasHighScoreAfterGamePlay()
         {
             //Arrange
+            var game = new GameWithoutIoC();
+
             const string playerName = "Reinier";
 
-            HighScoreServiceMock.Setup(service => service.SaveAsync(playerName, It.Is<int>(x => x > 0 && x < 100))).Returns(Task.CompletedTask);
-            HighScoreServiceMock.Setup(service => service.GetHighScoreAsync(playerName)).Returns(Task.FromResult(99));
-
             //Act
-            await Game.PlayAsync(playerName).ConfigureAwait(false);
+            await game.PlayAsync(playerName).ConfigureAwait(false);
 
-            var (highScoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+            var (highScoreName, highScore) = await game.GetScoreAsync(playerName).ConfigureAwait(false);
 
             //Assert
-            Assert.Equal(playerName, highScoreName);
-            Assert.InRange(highScore, 0, 100);
-
-            MockRepository.VerifyAll();
+            highScoreName.Should().Be(playerName, "the game should save the highscore of the player currently playing");
+            highScore.Should().BeInRange(0, 100, "the score is determined with 0 and 100 as excluded boundaries");
         }
 
         [Fact]
         public async Task TestSomethingElse()
         {
             //Arrange
+            var game = new GameWithoutIoC();
+
             const string playerName = "Marc";
 
-            HighScoreServiceMock.Setup(service => service.SaveAsync(playerName, It.Is<int>(x => x > 0 && x < 100))).Returns(Task.CompletedTask);
-            HighScoreServiceMock.Setup(service => service.GetHighScoreAsync(playerName)).Returns(Task.FromResult(99));
-
             //Act
-            await Game.PlayAsync(playerName).ConfigureAwait(false);
+            await game.PlayAsync(playerName).ConfigureAwait(false);
 
-            var (highScoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+            var (highScoreName, highScore) = await game.GetScoreAsync(playerName).ConfigureAwait(false);
 
             //Assert
-            Assert.Equal(playerName, highScoreName);
-            Assert.InRange(highScore, 0, 100);
-
-            MockRepository.VerifyAll();
+            highScoreName.Should().Be(playerName, "the game should save the highscore of the player currently playing");
+            highScore.Should().BeInRange(0, 100, "the score is determined with 0 and 100 as excluded boundaries");
         }
     }
 }

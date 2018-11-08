@@ -19,33 +19,38 @@ namespace TicTacToe.Tests
             Game = new Game(HighScoreServiceMock.Object);
         }
 
-        [Fact]
+        [Fact(Skip = "Do fun stuff in Game.cs first!")]
         public async Task TestPlayerHasHighScoreAfterGamePlay_CallbackHighScore()
         {
-            const string playerName = "Reinier";
-
             //Arrange HighScoreService for saving a highscore
+            string recordedPlayerName = null;
             int recordedHighScore = -1;
 
             HighScoreServiceMock
-                .Setup(service => service.SaveAsync(playerName, It.Is<int>(x => x > 0 && x < 100)))
+                .Setup(service => service.SaveAsync(It.IsAny<string>(), It.Is<int>(x => x > 0 && x < 100)))
                 .Returns(Task.CompletedTask)
-                .Callback<string, int>((_, savedScore) => recordedHighScore = savedScore);
+                .Callback<string, int>((savedPlayerName, savedScore) =>
+                {
+                    recordedPlayerName = savedPlayerName;
+                    recordedHighScore = savedScore;
+                });
 
             //Act
-            await Game.PlayAsync(playerName).ConfigureAwait(false);
+            await Game.PlayAsync("Reinier").ConfigureAwait(false);
 
             //Arrange HighScoreServiceMock with recorded highscore
             HighScoreServiceMock
-                .Setup(service => service.GetHighScoreAsync(playerName))
+                .Setup(service => service.GetHighScoreAsync(recordedPlayerName))
                 .Returns(Task.FromResult(recordedHighScore));
 
-            var (highScoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+            var (highScoreName, highScore) = await Game.GetScoreAsync(recordedPlayerName).ConfigureAwait(false);
 
             //Assert
-            Assert.Equal(playerName, highScoreName);
-            Assert.Equal(recordedHighScore, highScore);
+            Assert.Equal("Reinier", highScoreName);
             Assert.InRange(highScore, 0, 100);
+
+            Assert.Equal(recordedPlayerName, highScoreName);
+            Assert.Equal(recordedHighScore, highScore);
 
             MockRepository.VerifyAll();
         }

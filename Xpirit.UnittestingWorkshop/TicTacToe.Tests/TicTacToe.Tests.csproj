@@ -25,4 +25,12 @@
     <ProjectReference Include="..\TicTacToe\TicTacToe.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="xx Inmemory integration testing\" />
+    <Folder Include="xx AutoFixture\" />
+    <Folder Include="xx Mutation testing\" />
+    <Folder Include="xx Analyzers\" />
+    <Folder Include="xx Property based testing\" />
+  </ItemGroup>
+
 </Project>

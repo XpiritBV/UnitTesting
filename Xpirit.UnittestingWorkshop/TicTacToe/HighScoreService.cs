@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TicTacToe
@@ -31,6 +32,8 @@ namespace TicTacToe
                 }
 
                 HighScores.Add(name, score);
+
+                //Thread.Sleep(10000); //What is this service was very slow, or does some IO related stuff?
             }).ConfigureAwait(false);
         }
 

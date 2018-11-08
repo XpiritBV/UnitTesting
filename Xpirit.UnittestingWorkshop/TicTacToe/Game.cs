@@ -21,7 +21,11 @@ namespace TicTacToe
 
         public async Task<(string name, int score)> GetScoreAsync(string name)
         {
-            return (name, await HighScoreService.GetHighScoreAsync(name).ConfigureAwait(false));
+            var score = await HighScoreService.GetHighScoreAsync(name).ConfigureAwait(false);
+
+            //score = 10; //Fun stuff!
+
+            return (name, score);
         }
     }
 }

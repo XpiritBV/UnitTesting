@@ -21,7 +21,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public async Task TestPlayerHasHighScoreAfterGamePlay()
+        public async Task TestGameCrashesIfHighScoreServiceIsDown()
         {
             //Arrange
             const string playerName = "Reinier";

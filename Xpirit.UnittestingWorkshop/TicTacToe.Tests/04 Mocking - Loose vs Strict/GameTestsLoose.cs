@@ -4,41 +4,67 @@ using Xunit;
 
 namespace TicTacToe.Tests
 {
-    public class GameTestsStrict
+    public class GameTestsLoose
     {
         private Game Game { get; }
 
         private MockRepository MockRepository { get; }
         private Mock<IHighScoreService> HighScoreServiceMock { get; }
 
-        public GameTestsStrict()
+        public GameTestsLoose()
         {
-            MockRepository = new MockRepository(MockBehavior.Strict);
+            MockRepository = new MockRepository(MockBehavior.Loose);
             HighScoreServiceMock = MockRepository.Create<IHighScoreService>();
+
+            //Alternatives:
+            //var highScoreService = new Mock<IHighScoreService>(MockBehavior.Loose);
+            //var highScoreService = Mock.Of<IHighScoreService>();
 
             Game = new Game(HighScoreServiceMock.Object);
         }
 
-        [Fact(Skip = "Check out this error message")]
+        [Fact(Skip = "Failing assertion for some reason")]
         public async Task TestPlayerHasHighScoreAfterGamePlay_NoArrange()
         {
-            //Arrange
             const string playerName = "Reinier";
+
+            //Arrange
 
             //Act
             await Game.PlayAsync(playerName).ConfigureAwait(false);
 
-            var (highscoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+            //Arrange HighScoreServiceMock with recorded highscore
+            var (highScoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
 
             //Assert
-            Assert.Equal(playerName, highscoreName);
+            Assert.Equal(playerName, highScoreName);
             Assert.InRange(highScore, 0, 100);
 
             MockRepository.VerifyAll();
         }
 
         [Fact]
-        public async Task TestPlayerHasHighScoreAfterGamePlay()
+        public async Task TestPlayerHasHighScoreAfterGamePlay_V1() //Huray, green! But is it OK?
+        {
+            //Arrange
+            const string playerName = "Reinier";
+
+            HighScoreServiceMock.Setup(service => service.SaveAsync(playerName, It.Is<int>(x => x > 0 && x < 100))).Returns(Task.CompletedTask);
+
+            //Act
+            await Game.PlayAsync(playerName).ConfigureAwait(false);
+
+            var (highScoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
+
+            //Assert
+            Assert.Equal(playerName, highScoreName);
+            Assert.InRange(highScore, 0, 100);
+
+            MockRepository.VerifyAll();
+        }
+
+        [Fact]
+        public async Task TestPlayerHasHighScoreAfterGamePlay_V2()
         {
             //Arrange
             const string playerName = "Reinier";
