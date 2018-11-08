@@ -6,14 +6,14 @@ using Xunit;
 
 namespace TicTacToe.Tests
 {
-    public class GameTestsUnits
+    public class GameTestsWrongScope
     {
         private Game Game { get; }
 
         private MockRepository MockRepository { get; }
         private Mock<IHighScoreService> HighScoreServiceMock { get; }
 
-        public GameTestsUnits()
+        public GameTestsWrongScope()
         {
             MockRepository = new MockRepository(MockBehavior.Loose);
             HighScoreServiceMock = MockRepository.Create<IHighScoreService>();
