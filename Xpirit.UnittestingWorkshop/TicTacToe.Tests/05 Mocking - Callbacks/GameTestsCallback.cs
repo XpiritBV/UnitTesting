@@ -19,7 +19,7 @@ namespace TicTacToe.Tests
             Game = new Game(HighScoreServiceMock.Object);
         }
 
-        [Fact(Skip = "Do fun stuff in Game.cs first!")]
+        [Fact]
         public async Task TestPlayerHasHighScoreAfterGamePlay_CallbackHighScore()
         {
             //Arrange HighScoreService for saving a highscore
@@ -33,16 +33,14 @@ namespace TicTacToe.Tests
                 {
                     recordedPlayerName = savedPlayerName;
                     recordedHighScore = savedScore;
+
+                    HighScoreServiceMock
+                        .Setup(service => service.GetHighScoreAsync(recordedPlayerName))
+                        .Returns(Task.FromResult(recordedHighScore));
                 });
 
             //Act
             await Game.PlayAsync("Reinier").ConfigureAwait(false);
-
-            //Arrange HighScoreServiceMock with recorded highscore
-            HighScoreServiceMock
-                .Setup(service => service.GetHighScoreAsync(recordedPlayerName))
-                .Returns(Task.FromResult(recordedHighScore));
-
             var (highScoreName, highScore) = await Game.GetScoreAsync(recordedPlayerName).ConfigureAwait(false);
 
             //Assert

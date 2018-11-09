@@ -23,8 +23,8 @@ namespace TicTacToe.Tests
             Game = new Game(HighScoreServiceMock.Object);
         }
 
-        [Fact(Skip = "Failing assertion for some reason")]
-        public async Task TestPlayerHasHighScoreAfterGamePlay_NoArrange()
+        [Fact]
+        public async Task TestPlayerHasHighScoreAfterGamePlay_NoArrange() //Huray, green! But is it OK?
         {
             const string playerName = "Reinier";
 
@@ -44,27 +44,7 @@ namespace TicTacToe.Tests
         }
 
         [Fact]
-        public async Task TestPlayerHasHighScoreAfterGamePlay_V1() //Huray, green! But is it OK?
-        {
-            //Arrange
-            const string playerName = "Reinier";
-
-            HighScoreServiceMock.Setup(service => service.SaveAsync(playerName, It.Is<int>(x => x > 0 && x < 100))).Returns(Task.CompletedTask);
-
-            //Act
-            await Game.PlayAsync(playerName).ConfigureAwait(false);
-
-            var (highScoreName, highScore) = await Game.GetScoreAsync(playerName).ConfigureAwait(false);
-
-            //Assert
-            Assert.Equal(playerName, highScoreName);
-            Assert.InRange(highScore, 0, 100);
-
-            MockRepository.VerifyAll();
-        }
-
-        [Fact]
-        public async Task TestPlayerHasHighScoreAfterGamePlay_V2()
+        public async Task TestPlayerHasHighScoreAfterGamePlay()
         {
             //Arrange
             const string playerName = "Reinier";

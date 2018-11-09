@@ -21,6 +21,9 @@ namespace TicTacToe.Tests
 
             //Assert
             highScoreName.Should().Be(playerName, "the game should save the highscore of the player currently playing");
+            highScoreName.Should().Be(playerName, because: "the game should save the highscore of the player currently playing");
+            highScoreName.Should().Be(playerName, "because the game should save the highscore of the player currently playing");
+
             highScore.Should().BeInRange(0, 100, "the score is determined with 0 and 100 as excluded boundaries");
 
             highScoreName.Should().StartWith("R").And.Contain("einie").And.EndWith("r").And.HaveLength(7);
