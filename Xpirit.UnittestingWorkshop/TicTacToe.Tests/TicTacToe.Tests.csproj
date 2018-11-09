@@ -26,11 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="xx Inmemory integration testing\" />
-    <Folder Include="xx AutoFixture\" />
-    <Folder Include="xx Mutation testing\" />
-    <Folder Include="xx Analyzers\" />
-    <Folder Include="xx Property based testing\" />
+    <Folder Include="Demos\xx Inmemory integration testing\" />
+    <Folder Include="Demos\xx AutoFixture\" />
+    <Folder Include="Demos\xx Mutation testing\" />
+    <Folder Include="Demos\xx Analyzers\" />
+    <Folder Include="Demos\xx Property based testing\" />
   </ItemGroup>
 
 </Project>

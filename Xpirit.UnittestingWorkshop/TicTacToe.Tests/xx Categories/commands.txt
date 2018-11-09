@@ -1,5 +1,0 @@
-﻿dotnet test --filter Category!=Integration
-
-of
-
-Test Explorer -> Show Test Hiearchy uit -> Group By Traits aan

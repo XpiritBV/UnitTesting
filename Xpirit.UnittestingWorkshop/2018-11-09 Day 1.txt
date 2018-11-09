@@ -1,0 +1,23 @@
+Vragen & vervolgonderwerpen dag 2?
+- magazines & shirts meenemen!
+- moeilijke gevallen (zie GIT)
+- legacy code
+- mutation testing (& property based testing?)
+- evt. fakes & stubs
+
+Niet verder behandelen:
+- tfs & xunit integratie
+- vs professional tooling: ncrunch?
+- performance live unit testing?
+- code snippet delen!
+- projectinrichting met tests
+
+Verbeterpunten materiaal dag 1:
+- verschillende manieren van moq gebruik (new mock, mock.of en mockfactory meer uitwerken & aangeven wat mockfactory toevoegt)
+- solid voorzien van voorbeelden -> plaatjes
+- hoe werkt mocking en waarom werkt bv concrete class niet? dag2 deepdive wellicht ook fakes e.d.?
+- loose testcase faalde niet meer?
+- loose vs strict voorbeelden wanneer welk
+- classnames herzien
+- voorbeelden van de extremen van state based en interaction based testing
+- Throws vs ThrowsAsync -> Throws werkt ook, wat is het verschil?
