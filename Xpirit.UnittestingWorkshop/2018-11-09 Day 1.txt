@@ -1,9 +1,16 @@
+Todo:
+- Marc: Kata stubs & autofixture
+- Reinier: Kata Todo
+- Marc: Slide: ACL, datetimeprovider > samenvatten als: eigen laag toevoegen waar je controle over hebt
+- Reinier: Draaien over StackState & slide maken inc kata met downloadlink
+- Reinier: Plan migratie .net core
+- Marc: Integratietesten & traits
+
 Vragen & vervolgonderwerpen dag 2?
-- magazines & shirts meenemen!
-- moeilijke gevallen (zie GIT)
-- legacy code
-- mutation testing (& property based testing?)
-- evt. fakes & stubs
+- magazines & shirts meenemen! -> 0 dagen
+- moeilijke gevallen inc legacy (zie GIT) -> 1 dag
+- mutation testing (& property based testing?) -> 0.5 tot 1 dag (afhankelijk van materiaal)
+- evt. fakes & stubs -> fakes niet (https://docs.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2017), stubs & autofixture in kata -> 0.5
 
 Niet verder behandelen:
 - tfs & xunit integratie
@@ -21,3 +28,6 @@ Verbeterpunten materiaal dag 1:
 - classnames herzien
 - voorbeelden van de extremen van state based en interaction based testing
 - Throws vs ThrowsAsync -> Throws werkt ook, wat is het verschil?
+
+Idee dag 3:
+- BYOL

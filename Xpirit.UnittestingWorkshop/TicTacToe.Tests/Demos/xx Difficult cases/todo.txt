@@ -3,9 +3,13 @@
 - Mocking static code calls
 - Moving untestable code to ACL type of code
 - DateTime.Now and other precise code
-- Dependencies in attributes (not sure if maybe too much of an edge case)
+
 - testing protected properties/methods/fields with subclass and public setter (internalsvisibleto?)
+
 - codebehind webform
 - httpclient
 - entityframework classes zonder interface
 - direct sql statements, netwerk shares, ...?
+
+Niet:
+- Dependencies in attributes (not sure if maybe too much of an edge case)
