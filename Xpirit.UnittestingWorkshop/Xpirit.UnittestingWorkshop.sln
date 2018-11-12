@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe", "TicTacToe\TicT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Tests", "TicTacToe.Tests\TicTacToe.Tests.csproj", "{9022B43B-8A83-4592-BF78-2C2D33CA1D79}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Katas", "Katas", "{D855AA80-40F5-4048-A999-D72E25593125}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TDD_Katas", "TDD_Katas", "{D855AA80-40F5-4048-A999-D72E25593125}"
 	ProjectSection(SolutionItems) = preProject
 		..\tdd_katas\tdd_kata1.md = ..\tdd_katas\tdd_kata1.md
 		..\tdd_katas\tdd_kata2.md = ..\tdd_katas\tdd_kata2.md
@@ -20,14 +20,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Katas", "Katas", "{D855AA80
 		..\tdd_katas\tdd_kata_intro.md = ..\tdd_katas\tdd_kata_intro.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A53A214F-0ED2-4BF9-AA9A-25D61217FE46}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{A53A214F-0ED2-4BF9-AA9A-25D61217FE46}"
 	ProjectSection(SolutionItems) = preProject
 		..\presentations\Unit Testing Day 1.pptx = ..\presentations\Unit Testing Day 1.pptx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feedback", "Feedback", "{72123FDB-5DE3-4513-B0D9-2FB4F9757B5A}"
 	ProjectSection(SolutionItems) = preProject
-		2018-11-09 Day 1.txt = 2018-11-09 Day 1.txt
+		..\Feedback\2018-11-09 Day 1.txt = ..\Feedback\2018-11-09 Day 1.txt
 	EndProjectSection
 EndProject
 Global
