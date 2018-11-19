@@ -5,7 +5,7 @@ This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe]
 ## Before you start
 
 - Try not to read ahead.
-- Do one task at a time. The trick is to learn to work incrementally.
+- Do one numbered task at a time. The trick is to learn to work incrementally.
 
 ## Tasks & specifications
 
@@ -21,4 +21,4 @@ This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe]
 
 ## Next exercise
 
-The next kata is [TDD Kata 2 - Tic-tac-toe Moving](tdd_kata2.md).
+The next kata is [TDD Kata 2](tdd_kata2.md).

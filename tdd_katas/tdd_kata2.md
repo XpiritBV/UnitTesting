@@ -2,12 +2,12 @@
 
 This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the previous kata is completed: [TDD Kata 1 - Tic-tac-toe Moving](tdd_kata1.md).
+This document assumes the previous kata is completed: [TDD Kata 1 - Tic-tac-toe Player](tdd_kata1.md).
 
 ## Before you start
 
 - Try not to read ahead.
-- Do one task at a time. The trick is to learn to work incrementally.
+- Do one numbered task at a time. The trick is to learn to work incrementally.
 
 ## Tasks & specifications
 
@@ -24,4 +24,4 @@ This document assumes the previous kata is completed: [TDD Kata 1 - Tic-tac-toe 
 
 ## Next exercise
 
-The next kata is [TDD Kata 3 - Tic-tac-toe Winners](tdd_kata3.md).
+The next kata is [TDD Kata 3](tdd_kata3.md).

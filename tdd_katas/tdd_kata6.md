@@ -2,12 +2,12 @@
 
 This kata is part of a series of exercises described in [TDD Kata - Tic-tac-toe](tdd_kata_intro.md).
 
-This document assumes the previous kata is completed: [TDD Kata 5 - Tic-tac-toe Logging](tdd_kata5.md).
+This document assumes the previous kata is completed: [TDD Kata 5 - Tic-tac-toe Boundaries](tdd_kata5.md).
 
 ## Before you start
 
 - Try not to read ahead.
-- Do one task at a time. The trick is to learn to work incrementally.
+- Do one numbered task at a time. The trick is to learn to work incrementally.
 
 ## Tasks & specifications
 
@@ -19,4 +19,4 @@ This document assumes the previous kata is completed: [TDD Kata 5 - Tic-tac-toe 
 
 ## Next exercise
 
-The next kata is [TDD Kata 7 - Tic-tac-toe Saving game state to disk](tdd_kata7.md).
+The next kata is [TDD Kata 7](tdd_kata7.md).
