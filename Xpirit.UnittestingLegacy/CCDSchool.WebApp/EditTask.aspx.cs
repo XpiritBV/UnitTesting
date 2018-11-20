@@ -1,12 +1,8 @@
 ﻿using CCDSchool.Business;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CCDSchool.WebApp
 {
@@ -21,13 +17,13 @@ namespace CCDSchool.WebApp
         }
         public EditTask()
         {
-            this.DBConnectionString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString.Replace("{RootPath}", HttpContext.Current.Server.MapPath(""));
+            DBConnectionString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString.Replace("{RootPath}", HttpContext.Current.Server.MapPath(""));
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                DT = objListService.GetTaskById(Convert.ToInt32(Request.QueryString["Id"]), this.DBConnectionString);
+                DT = objListService.GetTaskById(Convert.ToInt32(Request.QueryString["Id"]), DBConnectionString);
                 if (DT.Rows.Count > 0)
                 {
                     DataRow dr = DT.Rows[0];
@@ -41,7 +37,7 @@ namespace CCDSchool.WebApp
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            objListService.UpdateTask(Convert.ToInt32(Request.QueryString["Id"]), txtTaskTitle.Text, txtDesc.Text, Convert.ToInt32(chkImportant.Checked), txtDueDate.Text, this.DBConnectionString);
+            objListService.UpdateTask(Convert.ToInt32(Request.QueryString["Id"]), txtTaskTitle.Text, txtDesc.Text, Convert.ToInt32(chkImportant.Checked), txtDueDate.Text, DBConnectionString);
             Response.Redirect("~/TodoList.aspx");
         }
 

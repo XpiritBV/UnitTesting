@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
 using System.Data.SQLite;
-using System.Configuration;
 namespace CCDSchool.Business
 {
-    public class SQLLiteHelper
+    public class SQLLiteHelper : ISqlLiteHelper
     {
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
@@ -19,29 +14,29 @@ namespace CCDSchool.Business
         }
         public SQLLiteHelper(string Connectionstring)
         {
-            this.ConnectionString = Connectionstring;
+            ConnectionString = Connectionstring;
         }
         public string _conn;
         public string ConnectionString
         {
             get
             {
-                return this._conn;
+                return _conn;
             }
             set
             {
-                this._conn = value;
+                _conn = value;
             }
         }
         private void SetConnection()
         {
 
             //sql_con = new SQLiteConnection(this.ConnectionString);
-           
+
         }
         public DataTable ExecuteQuery(string Query,string Conn)
         {
-             
+
             sql_con = new SQLiteConnection(Conn);
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();

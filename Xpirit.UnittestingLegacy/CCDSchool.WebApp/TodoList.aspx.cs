@@ -7,23 +7,87 @@ using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SQLite;
 using CCDSchool.Business;
 using System.Configuration;
+using System.Web.SessionState;
+
 namespace CCDSchool.WebApp
 {
-    public partial class TodoList : System.Web.UI.Page
+    public interface ITodoListWrapper
     {
-        TaskListService objListService = new TaskListService();
-        public string DBConnectionString
+        bool IsPostBack();
+
+        HttpCookie GetRequestCookie(string cookie);
+
+        object GetSessionState(string name);
+    }
+
+    public class TodoListWrapper : ITodoListWrapper
+    {
+        private TodoList TodoList { get; }
+
+        public TodoListWrapper(TodoList todoList)
         {
-            get;
-            set;
+            TodoList = todoList;
         }
 
-        public TodoList()
+        public bool IsPostBack()
         {
-            this.DBConnectionString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString.Replace("{RootPath}", HttpContext.Current.Server.MapPath(""));
+            return TodoList.IsPostBack;
+        }
+
+        public HttpCookie GetRequestCookie(string cookie)
+        {
+            return TodoList.Request.Cookies[cookie];
+        }
+
+        public object GetSessionState(string name)
+        {
+            return TodoList.Session[name];
+        }
+    }
+
+    public partial class TodoList : Page
+    {
+        public string DBConnectionString { get; }
+
+        private ITaskListService TaskListService { get; }
+        private ITodoListWrapper TodoListWrapper { get; }
+
+        public TodoList() : this(null, null, null)
+        {
+
+        }
+
+        protected TodoList(ITaskListService taskListService = null, ITodoListWrapper todoListWrapper = null, string dbConnectionString = null)
+        {
+            if(taskListService == null)
+            {
+                TaskListService = new TaskListService();
+            }
+            else
+            {
+                TaskListService = taskListService;
+            }
+
+            if(todoListWrapper == null)
+            {
+                TodoListWrapper = new TodoListWrapper(this);
+            }
+            else
+            {
+                TodoListWrapper = todoListWrapper;
+            }
+
+
+            if (dbConnectionString == null)
+            {
+                DBConnectionString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString.Replace("{RootPath}", HttpContext.Current.Server.MapPath(""));
+            }
+            else
+            {
+                DBConnectionString = dbConnectionString;
+            }
         }
 
         private void LoadListData()
@@ -33,15 +97,14 @@ namespace CCDSchool.WebApp
 
         private void BindTaskList(bool IncludeArchieved)
         {
-            TaskListService objListService = new TaskListService();
             DataTable DT;
-            if (IncludeArchieved == true)
+            if (IncludeArchieved)
             {
-                DT = objListService.GetAllTaskListWithUnarchieved(this.DBConnectionString);
+                DT = TaskListService.GetAllTaskListWithUnarchieved(DBConnectionString);
             }
             else
             {
-                DT = objListService.GetAllTaskList(this.DBConnectionString);
+                DT = TaskListService.GetAllTaskList(DBConnectionString);
             }
             List<ToDoListClass> ToDoList = new List<ToDoListClass>();
             for (int i = 0; i < DT.Rows.Count; i++)
@@ -57,8 +120,7 @@ namespace CCDSchool.WebApp
 
         private void LoadTaskData()
         {
-            TaskListService objListService = new TaskListService();
-            DataTable DT = objListService.GetAllTask(this.DBConnectionString);
+            DataTable DT = TaskListService.GetAllTask(DBConnectionString);
             List<ToDoListTaskClass> TaskList = new List<ToDoListTaskClass>();
             for (int i = 0; i < DT.Rows.Count; i++)
             {
@@ -79,6 +141,7 @@ namespace CCDSchool.WebApp
             }
             ViewState["TaskList"] = TaskList;
         }
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
 
@@ -88,59 +151,64 @@ namespace CCDSchool.WebApp
             Response.Cookies.Add(loginCookie);
             Response.Redirect("~/ToDoList.aspx");
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (TodoListWrapper.IsPostBack())
             {
-                if (Request.Cookies["UserName"] == null)
-                {
-                    //Response.Redirect("~/Login.aspx");
-                    trLoggedin.Visible = false;
-                    trLogin.Visible = true;
-                    btnAddList.Enabled = false;
-                    txtTask.Enabled = false;
-                    txtTodoList.Enabled = false;
-                    btnAddTask.Enabled = false;
-                }
-                else
-                {
-                    lblUserName.Text = Request.Cookies["UserName"].Value;
-                    trLoggedin.Visible = true;
-                    trLogin.Visible = false;
-                    btnAddList.Enabled = true;
-                    txtTask.Enabled = true;
-                    txtTodoList.Enabled = true;
-                    btnAddTask.Enabled = true;
-                }
-                LoadListData();
-                if (Session["LastListID"] != null)
-                {
-                    int Id = Convert.ToInt32(Session["LastListID"].ToString());
-                    BindTaskList(chkArchived.Checked);
-                    lstTaskListV.SelectedIndex = Id;
-                    BindFilterGrid(Convert.ToInt32(lstTaskListV.SelectedItem.Value));
-                }
-                else
-                {
-                    lstTaskListV.SelectedIndex = 0;
-                    BindFilterGrid(Convert.ToInt32(lstTaskListV.SelectedItem.Value));
-                }
+                return;
+            }
 
+            if (TodoListWrapper.GetRequestCookie("UserName") == null)
+            {
+                //Response.Redirect("~/Login.aspx");
+                trLoggedin.Visible = false;
+                trLogin.Visible = true;
+                btnAddList.Enabled = false;
+                txtTask.Enabled = false;
+                txtTodoList.Enabled = false;
+                btnAddTask.Enabled = false;
+            }
+            else
+            {
+                lblUserName.Text = TodoListWrapper.GetRequestCookie("UserName").Value;
+                trLoggedin.Visible = true;
+                trLogin.Visible = false;
+                btnAddList.Enabled = true;
+                txtTask.Enabled = true;
+                txtTodoList.Enabled = true;
+                btnAddTask.Enabled = true;
+            }
+
+            LoadListData();
+
+            if (TodoListWrapper.GetSessionState("LastListID") != null)
+            {
+                int Id = Convert.ToInt32(TodoListWrapper.GetSessionState("LastListID").ToString());
+                BindTaskList(chkArchived.Checked);
+                lstTaskListV.SelectedIndex = Id;
+                BindFilterGrid(Convert.ToInt32(lstTaskListV.SelectedItem.Value));
+            }
+            else
+            {
+                lstTaskListV.SelectedIndex = 0;
+                BindFilterGrid(Convert.ToInt32(lstTaskListV.SelectedItem.Value));
             }
         }
+
         public static DataTable ToDataTable<T>(IEnumerable<T> varlist)
         {
             DataTable dtReturn = new DataTable();
 
-            // column names 
+            // column names
             PropertyInfo[] oProps = null;
 
             if (varlist == null) return dtReturn;
 
             foreach (T rec in varlist)
             {
-                // Use reflection to get property names, to create table, Only first time, others 
-                //will follow 
+                // Use reflection to get property names, to create table, Only first time, others
+                //will follow
                 if (oProps == null)
                 {
                     oProps = ((Type)rec.GetType()).GetProperties();
@@ -208,7 +276,7 @@ namespace CCDSchool.WebApp
             gdvTask.DataBind();
 
             taskrow.Style.Add(HtmlTextWriterStyle.Visibility, "");
-            
+
         }
 
         protected void gdvTask_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -243,7 +311,7 @@ namespace CCDSchool.WebApp
                         gdvTask.Columns[6].Visible = true;
                     }
 
-                 
+
                 }
             }
         }
@@ -253,7 +321,7 @@ namespace CCDSchool.WebApp
             if (!string.IsNullOrEmpty(txtTask.Text))
             {
                 chkArchived.Checked = false;
-                objListService.AddTask(txtTask.Text, Convert.ToInt32(lstTaskListV.SelectedItem.Value),Request.Cookies["UserName"].Value, this.DBConnectionString);
+                TaskListService.AddTask(txtTask.Text, Convert.ToInt32(lstTaskListV.SelectedItem.Value),Request.Cookies["UserName"].Value, DBConnectionString);
                 chkArchived_CheckedChanged(null, null);
                 txtTask.Text = "";
             }
@@ -262,7 +330,7 @@ namespace CCDSchool.WebApp
         {
             if (!string.IsNullOrEmpty(txtTodoList.Text))
             {
-                objListService.AddTaskList(txtTodoList.Text, this.DBConnectionString);
+                TaskListService.AddTaskList(txtTodoList.Text, DBConnectionString);
                 txtTodoList.Text = "";
                 chkArchived.Checked = false;
                 BindTaskList(chkArchived.Checked);
@@ -271,6 +339,7 @@ namespace CCDSchool.WebApp
 
             }
         }
+
         protected void gdvTask_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
@@ -280,15 +349,16 @@ namespace CCDSchool.WebApp
             }
             if (e.CommandName == "Archieve")
             {
-                objListService.UpdateTasktoarchieve(Convert.ToInt32(e.CommandArgument.ToString()), this.DBConnectionString);
+                TaskListService.UpdateTasktoarchieve(Convert.ToInt32(e.CommandArgument.ToString()), DBConnectionString);
                 chkArchived_CheckedChanged(null, null);
             }
             if (e.CommandName == "Delete")
             {
-                objListService.DeleteTask(Convert.ToInt32(e.CommandArgument.ToString()), this.DBConnectionString);
+                TaskListService.DeleteTask(Convert.ToInt32(e.CommandArgument.ToString()), DBConnectionString);
                 chkArchived_CheckedChanged(null, null);
             }
         }
+
         protected void gdvTask_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 

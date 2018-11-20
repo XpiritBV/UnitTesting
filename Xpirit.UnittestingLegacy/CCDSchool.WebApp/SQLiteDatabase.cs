@@ -123,7 +123,7 @@ namespace CCDSchool.WebApp
             }
             try
             {
-                this.ExecuteNonQuery(String.Format("update {0} set {1} where {2};", tableName, vals, where));
+                ExecuteNonQuery(String.Format("update {0} set {1} where {2};", tableName, vals, where));
             }
             catch
             {
@@ -143,7 +143,7 @@ namespace CCDSchool.WebApp
             Boolean returnCode = true;
             try
             {
-                this.ExecuteNonQuery(String.Format("delete from {0} where {1};", tableName, where));
+                ExecuteNonQuery(String.Format("delete from {0} where {1};", tableName, where));
             }
             catch (Exception fail)
             {
@@ -173,7 +173,7 @@ namespace CCDSchool.WebApp
             values = values.Substring(0, values.Length - 1);
             try
             {
-                this.ExecuteNonQuery(String.Format("insert into {0}({1}) values({2});", tableName, columns, values));
+                ExecuteNonQuery(String.Format("insert into {0}({1}) values({2});", tableName, columns, values));
             }
             catch (Exception fail)
             {
@@ -192,10 +192,10 @@ namespace CCDSchool.WebApp
             DataTable tables;
             try
             {
-                tables = this.GetDataTable("select NAME from SQLITE_MASTER where type='table' order by NAME;");
+                tables = GetDataTable("select NAME from SQLITE_MASTER where type='table' order by NAME;");
                 foreach (DataRow table in tables.Rows)
                 {
-                    this.ClearTable(table["NAME"].ToString());
+                    ClearTable(table["NAME"].ToString());
                 }
                 return true;
             }
@@ -215,7 +215,7 @@ namespace CCDSchool.WebApp
             try
             {
 
-                this.ExecuteNonQuery(String.Format("delete from {0};", table));
+                ExecuteNonQuery(String.Format("delete from {0};", table));
                 return true;
             }
             catch
