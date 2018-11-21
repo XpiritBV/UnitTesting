@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TDD_Katas", "TDD_Katas", "{
 		..\tdd_katas\tdd_kata6.md = ..\tdd_katas\tdd_kata6.md
 		..\tdd_katas\tdd_kata7.md = ..\tdd_katas\tdd_kata7.md
 		..\tdd_katas\tdd_kata8.md = ..\tdd_katas\tdd_kata8.md
+		..\tdd_katas\tdd_kata9.md = ..\tdd_katas\tdd_kata9.md
 		..\tdd_katas\tdd_kata_intro.md = ..\tdd_katas\tdd_kata_intro.md
 	EndProjectSection
 EndProject
