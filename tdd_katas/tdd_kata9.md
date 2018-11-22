@@ -11,3 +11,6 @@ This document assumes the previous kata is completed: [TDD Kata 2 - Tic-tac-toe 
 
 ## Tasks & specifications
 1.  Refactor the unit tests which require instances of the `Player` class and use [AutoFixture](https://github.com/AutoFixture/AutoFixture) to create these `Player` instances.
+	- You can use the AutoFixture [cheat sheet](https://github.com/AutoFixture/AutoFixture/wiki/Cheat-Sheet) to see the possibilities of the library.
+
+2.	Do you see other usages where AutoFixture can be used?
