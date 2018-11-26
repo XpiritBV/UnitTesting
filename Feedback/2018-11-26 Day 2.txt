@@ -1,0 +1,16 @@
+checkin/recap:
+* Voegt TDD niet te veel overhead toe? Wellicht requirements uitgebreider maken zodat de stapjes iets minder klein zijn?
+* Melden dat men code van dag 1 moet bewaren voor dag 2 en/of uitgewerkte kata's in git plaatsen
+* Duidelijk verschil maken tussen democode, eventuele uitgewerkte kata's en code die deelnemers zelf hebben geschreven
+* Effort tbv EF in-memory testing
+* Solution / project structuur
+* Fake voorbeeld sprekender maken
+
+* fakes
+* selenium
+* eerste oefeningen -> was geen deepdive
+* unittests in parallel draaien
+* katas behandelen -> hoe zouden wij het gedaan hebben?
+* cheatsheet
+* meer diepte in op moq
+* meer praktijkvoorbeelden
