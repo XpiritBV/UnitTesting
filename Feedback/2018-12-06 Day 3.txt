@@ -1,9 +1,0 @@
-testserver in netfx?
-refapp integrationtest voorbeeld doorsturen
-forms of cohesion
-lijsten van frameworks per gebied
-automapper tweet?
-naamgeving helper tweet?
-clean code toevoegen aan boekenslide
-advent of code rondsturen
-vragen of code hergebruikt kan worden
