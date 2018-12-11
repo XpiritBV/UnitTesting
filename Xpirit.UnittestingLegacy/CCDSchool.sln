@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28218.60
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCDSchool.WebApp", "CCDSchool.WebApp\CCDSchool.WebApp.csproj", "{469E0C5A-37FE-4BDB-9B22-52C412575FF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCDSchool.Business", "CCDSchool.Business\CCDSchool.Business.csproj", "{829B7BAE-54E6-4598-B7E7-B9B318F3C7A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HandsOnLab", "HandsOnLab", "{50304051-36B0-43C2-91B8-413E633F3ED3}"
+	ProjectSection(SolutionItems) = preProject
+		HandsOnLab\todo.md = HandsOnLab\todo.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
