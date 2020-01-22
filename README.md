@@ -5,7 +5,7 @@ This repository contains the Xpirit.UnittestingWorkshop.sln with demo code that 
 ## TDD Katas
 
 The training consists of coding katas to practice test driven development.
-The use case and katas are described in [tdd_kata_intro.md](tdd_katas\tdd_kata_intro.md).
+The use case and katas are described in [tdd_kata_intro.md](tdd_katas/tdd_kata_intro.md).
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)  
